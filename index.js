@@ -1,8 +1,5 @@
 //This is still work in progress
-/*
-Please report any bugs to nicomwaks@gmail.com
-i have added console.log on line 48 
- */
+
 'use strict'
 
 const express = require('express')
@@ -20,7 +17,7 @@ app.use(bodyParser.json())
 
 // index
 app.get('/', function (req, res) {
-	res.send('hello world i am a secret bot')
+	res.send('hei, jeg er DFØ sin chatbot!')
 })
 
 // for facebook verification
@@ -59,7 +56,7 @@ app.post('/webhook/', function (req, res) {
 
 
 // recommended to inject access tokens as environmental variables, e.g.
-const token = process.env.FB_PAGE_ACCESS_TOKEN
+const token = "EAACtPl97H00BAAMiuwNWZAP6km5cFbZBZCTd9z1vsk9ZBVVA1gjPe3exnjh94k9B2ZAo1mMwJ0zqP3q1q67p6bP4jvSW8I2f0ZCXeZC1GKZB0eo4SJSZBLm0moZBHMldGSTUO1TNEg1taMTEYcpDFA3UJjRWhMBFJs37u0PhZBLbPoPvwZDZD"
 
 
 function sendTextMessage(sender, text) {
