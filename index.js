@@ -31,54 +31,23 @@ app.get('/webhook/', function (req, res) {
 	}
 })
 
-// to post data
-app.post('/webhook/', function (req, res) {
-	let messaging_events = req.body.entry[0].messaging
-	for (let i = 0; i < messaging_events.length; i++) {
-		let event = req.body.entry[0].messaging[i]
-		let sender = event.sender.id
-		if (event.message && event.message.text) {
-			let text = event.message.text
-			if (text === 'Generic'){ 
-				console.log("welcome to chatbot")
-				//sendGenericMessage(sender)
-				continue
-			}
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-		}
-		if (event.postback) {
-			let text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
-			continue
-		}
-	}
-	res.sendStatus(200)
+
+
+
+app.post('/webhooks', function (req, res) {
+  var entry = FB.getMessageEntry(req.body)
+  // IS THE ENTRY A VALID MESSAGE?
+  if (entry && entry.message) {
+    
+      FB.newMessage(entry.sender.id, "That's interesting!")
+    }
+      
+      })
+    }
+  }
+
+  res.sendStatus(200)
 })
-
-
-
-// recommended to inject access tokens as environmental variables, e.g.
-const token = Config.FB_PAGE_TOKEN
-
-
-function sendTextMessage(sender, text) {
-	let messageData = { text:text }
-	
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
-		method: 'POST',
-		json: {
-			recipient: {id:sender},
-			message: messageData,
-		}
-	}, function(error, response, body) {
-		if (error) {
-			console.log('Error sending messages: ', error)
-		} else if (response.body.error) {
-			console.log('Error: ', response.body.error)
-		}
-	})
 }
 
 
