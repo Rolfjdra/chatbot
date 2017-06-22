@@ -1,5 +1,5 @@
 //This is still work in progress
-
+//asd
 'use strict'
 
 const express = require('express')
@@ -42,8 +42,7 @@ app.post('/webhook/', function (req, res) {
 				//sendGenericMessage(sender)
 				continue
 			}
-			Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-        			FB.newMessage(sender, reply)
+			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
