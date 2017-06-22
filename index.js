@@ -38,21 +38,9 @@ app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
   // IS THE ENTRY A VALID MESSAGE?
   if (entry && entry.message) {
-    
-      FB.newMessage(entry.sender.id, "That's interesting!")
+    FB.newMessage(entry.sender.id, "That's interesting!")
     }
       
-      })
-    }
-  }
 
   res.sendStatus(200)
-})
-}
-
-
-
-// spin spin sugar
-app.listen(app.get('port'), function() {
-	console.log('running on port', app.get('port'))
 })
