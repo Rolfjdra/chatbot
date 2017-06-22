@@ -1,6 +1,6 @@
 'use strict'
 
-const request = require('request')
+var request = require('request')
 var Config = require('./config')
 
 // REQUEST TO FACEBOOK SERVER

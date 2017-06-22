@@ -1,46 +1,53 @@
-//This is still work in progress
-//asd
 'use strict'
 
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const app = express()
 
 var Config = require('./config')
+var FB = require('./facebook')
 
-app.set('port', (process.env.PORT || 5000))
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: false}))
 
-// parse application/json
+// LETS MAKE A SERVER!
+var app = express()
+app.set('port', (process.env.PORT) || 5000)
+// SPIN UP SERVER
+app.listen(app.get('port'), function () {
+  console.log('Running on port', app.get('port'))
+})
+// PARSE THE BODY
 app.use(bodyParser.json())
 
-// index
+
+// index page
 app.get('/', function (req, res) {
-	res.send('hei, jeg er DFØ sin chatbot!')
+  res.send('hei. jeg er dfochatbot')
 })
 
-// for facebook verification
-app.get('/webhook/', function (req, res) {
-	if (req.query['hub.verify_token'] === Config.FB_VERTIFY_TOKEN) {
-		res.send(req.query['hub.challenge'])
-	} else {
-		res.send('Error, wrong token')
-	}
+// for facebook to verify
+app.get('/webhooks', function (req, res) {
+  if (req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
+    res.send(req.query['hub.challenge'])
+  }
+  res.send('Error, wrong token')
 })
 
-
-
-
+// to send messages to facebook
 app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
   // IS THE ENTRY A VALID MESSAGE?
   if (entry && entry.message) {
-    FB.newMessage(entry.sender.id, "That's interesting!")
+    if (entry.message.attachments) {
+      // NOT SMART ENOUGH FOR ATTACHMENTS YET
+      FB.newMessage(entry.sender.id, "That's interesting!")
+    } else {
+      // SEND TO BOT FOR PROCESSING
+      FB.newMessage(entry.sender.id, "her!") {
+        
+      })
     }
-      
+  }
 
   res.sendStatus(200)
 })
