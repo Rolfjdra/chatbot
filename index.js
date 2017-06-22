@@ -7,6 +7,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
+const Config = require('/.config')
+
 app.set('port', (process.env.PORT || 5000))
 
 // parse application/x-www-form-urlencoded
@@ -22,7 +24,7 @@ app.get('/', function (req, res) {
 
 // for facebook verification
 app.get('/webhook/', function (req, res) {
-	if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
+	if (req.query['hub.verify_token'] === Config.FB_VERTIFY_TOKEN) {
 		res.send(req.query['hub.challenge'])
 	} else {
 		res.send('Error, wrong token')
@@ -56,7 +58,7 @@ app.post('/webhook/', function (req, res) {
 
 
 // recommended to inject access tokens as environmental variables, e.g.
-const token = "EAACtPl97H00BAAMiuwNWZAP6km5cFbZBZCTd9z1vsk9ZBVVA1gjPe3exnjh94k9B2ZAo1mMwJ0zqP3q1q67p6bP4jvSW8I2f0ZCXeZC1GKZB0eo4SJSZBLm0moZBHMldGSTUO1TNEg1taMTEYcpDFA3UJjRWhMBFJs37u0PhZBLbPoPvwZDZD"
+const token = Config.FB_PAGE_TOKEN
 
 
 function sendTextMessage(sender, text) {
