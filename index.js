@@ -7,9 +7,6 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-var FB = require(./'facebook')
-var Bot = require(./'bot)
-
 app.set('port', (process.env.PORT || 5000))
 
 // parse application/x-www-form-urlencoded
