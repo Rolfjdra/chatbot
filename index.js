@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-const Config = require('/.config')
+var Config = require('./config')
 
 app.set('port', (process.env.PORT || 5000))
 
