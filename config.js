@@ -1,6 +1,6 @@
 'use strict';
 
-const WIT_TOKEN = process.env.WIT_TOKEN || "TY53WNVQUULTRM7TFZR3RNAIK42IYT6G"
+const WIT_TOKEN = process.env.WIT_TOKEN || "BLYWUAJGTL3CNRAFTFYNHDUPJLJSWCQD"
 if (!WIT_TOKEN) {
   throw new Error("Ingen WIT_TOKEN. Hent: https://wit.ai/")
 }
