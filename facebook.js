@@ -1,7 +1,6 @@
 'use strict';
 
-// See the Send API reference
-// https://developers.facebook.com/docs/messenger-platform/send-api-reference
+// Send API
 const request = require('request');
 const Config = require('./config.js');
 

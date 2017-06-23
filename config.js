@@ -1,5 +1,5 @@
 'use strict';
-
+// Henter opp vertifikasjoner -> Facebookside, WIT-api, Heroku-webhook
 const WIT_TOKEN = process.env.WIT_TOKEN || "BLYWUAJGTL3CNRAFTFYNHDUPJLJSWCQD"
 if (!WIT_TOKEN) {
   throw new Error("Ingen WIT_TOKEN. Hent: https://wit.ai/")

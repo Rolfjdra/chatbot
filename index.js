@@ -1,20 +1,15 @@
 'use strict';
 
-// Messenger API integration example
-// We assume you have:
-// * a Wit.ai bot setup (https://wit.ai/docs/quickstart)
-// * a Messenger Platform setup (https://developers.facebook.com/docs/messenger-platform/quickstart)
-// You need to `npm install` the following dependencies: body-parser, express, request.
-//
+// DFO-chatbot under utvikling
 const bodyParser = require('body-parser');
 const express = require('express');
 
-// get Bot, const, and Facebook API
+// Henter bot, vertifikasjoner, og FB API
 const bot = require('./bot.js');
 const Config = require('./config.js');
 const FB = require('./facebook.js');
 
-// Setting up our bot
+// Setter opp bot
 const wit = bot.getWit();
 
 // Webserver parameter
@@ -22,22 +17,22 @@ const PORT = process.env.PORT || 8445;
 
 // Wit.ai bot specific code
 
-// This will contain all user sessions.
-// Each session has an entry:
+// Inneholder alle user sessions
+// Alle sessions har entry:
 // sessionId -> {fbid: facebookUserId, context: sessionState}
 const sessions = {};
 
 const findOrCreateSession = (fbid) => {
   let sessionId;
-  // Let's see if we already have a session for the user fbid
+  // Sjekker om aktiv session er åpen for fbid
   Object.keys(sessions).forEach(k => {
     if (sessions[k].fbid === fbid) {
-      // Yep, got it!
+      // YEPP
       sessionId = k;
     }
   });
   if (!sessionId) {
-    // No session found for user fbid, let's create a new one
+    // Ingen aktiv session. Oppretter en ny
     sessionId = new Date().toISOString();
     sessions[sessionId] = {
       fbid: fbid,
@@ -49,7 +44,7 @@ const findOrCreateSession = (fbid) => {
   return sessionId;
 };
 
-// Starting our webserver and putting it all together
+// Starter opp webserver
 const app = express();
 app.set('port', PORT);
 app.listen(app.get('port'));
@@ -58,7 +53,7 @@ console.log("I'm wating for you @" + PORT);
 
 // index. Let's say something fun
 app.get('/', function(req, res) {
-  res.send('"Only those who will risk going too far can possibly find out how far one can go." - T.S. Eliot');
+  res.send('"Oppe og hopper!" - DFOchatbot');
 });
 
 // Webhook verify setup using FB_VERIFY_TOKEN
@@ -74,58 +69,58 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-// The main message handler
+// Main message handler
 app.post('/webhook', (req, res) => {
-  // Parsing the Messenger API response
+  // Parsing Messenger API respons
   const messaging = FB.getFirstMessagingEntry(req.body);
   if (messaging && messaging.message) {
 
-    // Yay! We got a new message!
+    // Mottok melding!!
 
-    // We retrieve the Facebook user ID of the sender
+    // Henter Facebook user ID
     const sender = messaging.sender.id;
 
-    // We retrieve the user's current session, or create one if it doesn't exist
-    // This is needed for our bot to figure out the conversation history
+    // Hent session, eller lag ny
+    // Finner samtalehistorikk
     const sessionId = findOrCreateSession(sender);
 
-    // We retrieve the message content
+    // Hent meldingsinnhold
     const msg = messaging.message.text;
     const atts = messaging.message.attachments;
 
     if (atts) {
-      // We received an attachment
+      // Vi mottok et vedlegg,bilde,gif etc...
 
-      // Let's reply with an automatic message
+      // Autoreply
       FB.fbMessage(
         sender,
-        'Sorry I can only process text messages for now.'
+        'Beklager, jeg kan for øyeblikket kun prosessere tekstmeldinger'
       );
     } else if (msg) {
-      // We received a text message
+      // Mottok meldingstekst
 
-      // Let's forward the message to the Wit.ai Bot Engine
-      // This will run all actions until our bot has nothing left to do
+      // Sender melding til wit.ai
+      // Kjør actions
       wit.runActions(
-        sessionId, // the user's current session
+        sessionId, // aktiv session
         msg, // the user's message 
-        sessions[sessionId].context, // the user's current session state
+        sessions[sessionId].context, // session state
         (error, context) => {
           if (error) {
-            console.log('Oops! Got an error from Wit:', error);
+            console.log('Oops! Fikk en feil fra Wit:', error);
           } else {
-            // Our bot did everything it has to do.
-            // Now it's waiting for further messages to proceed.
-            console.log('Waiting for futher messages.');
+            // bot er ferdig
+            // Venter på mer input
+            console.log('Venter på meldinger');
 
-            // Based on the session state, you might want to reset the session.
-            // This depends heavily on the business logic of your bot.
-            // Example:
+            // Reset session?
+            // Kanskje med annen logikk..
+            // Eksempel:
             // if (context['done']) {
             //   delete sessions[sessionId];
             // }
 
-            // Updating the user's current session state
+            // oppdater session state
             sessions[sessionId].context = context;
           }
         }
