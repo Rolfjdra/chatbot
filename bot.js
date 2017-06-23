@@ -1,74 +1,92 @@
-'use strict'
+'use strict';
 
-var Config = require('./config')
-var wit = require('./wit').getWit()
+// dfo ex
+const Wit = require('node-wit').Wit;
+const FB = require('./facebook.js');
+const Config = require('./config.js');
 
-// LETS SAVE USER SESSIONS
-var sessions = {}
-
-var findOrCreateSession = function (fbid) {
-  var sessionId
-
-  // DOES USER SESSION ALREADY EXIST?
-  Object.keys(sessions).forEach(k => {
-    if (sessions[k].fbid === fbid) {
-      // YUP
-      sessionId = k
-    }
-  })
-
-  // No session so we will create one
-  if (!sessionId) {
-    sessionId = new Date().toISOString()
-    sessions[sessionId] = {
-      fbid: fbid,
-      context: {
-        _fbid_: fbid
-      }
-    }
+const firstEntityValue = (entities, entity) => {
+  const val = entities && entities[entity] &&
+    Array.isArray(entities[entity]) &&
+    entities[entity].length > 0 &&
+    entities[entity][0].value;
+  if (!val) {
+    return null;
   }
+  return typeof val === 'object' ? val.value : val;
+};
 
-  return sessionId
-}
+// Bot actions
+const actions = {
+  say(sessionId, context, message, cb) {
+    console.log(message);
 
-var read = function (sender, message, reply) {
-	if (message === 'hello') {
-		// Let's reply back hello
-		message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
-		reply(sender, message)
-	} else {
-		// Let's find the user
-		var sessionId = findOrCreateSession(sender)
-		// Let's forward the message to the Wit.ai bot engine
-		// This will run all actions until there are no more actions left to do
-		wit.runActions(
-			sessionId, // the user's current session by id
-			message,  // the user's message
-			sessions[sessionId].context, // the user's session state
-			function (error, context) { // callback
-			if (error) {
-				console.log('oops!', error)
-			} else {
-				// Wit.ai ran all the actions
-				// Now it needs more messages
-				console.log('Waiting for further messages')
+    // Bot testing mode, run cb() and return
+    if (require.main === module) {
+      cb();
+      return;
+    }
 
-				// Based on the session state, you might want to reset the session
-				// Example:
-				// if (context['done']) {
-				// 	delete sessions[sessionId]
-				// }
+    // Our bot has something to say!
+    // Let's retrieve the Facebook user whose session belongs to from context
+    // TODO: need to get Facebook user name
+    const recipientId = context._fbid_;
+    if (recipientId) {
+      // Yay, we found our recipient!
+      // Let's forward our bot response to her.
+      FB.fbMessage(recipientId, message, (err, data) => {
+        if (err) {
+          console.log(
+            'Oops! An error occurred while forwarding the response to',
+            recipientId,
+            ':',
+            err
+          );
+        }
 
-				// Updating the user's current session state
-				sessions[sessionId].context = context
-			}
-		})
-	}
-}
+        // Let's give the wheel back to our bot
+        cb();
+      });
+    } else {
+      console.log('Oops! Couldn\'t find user in context:', context);
+      // Giving the wheel back to our bot
+      cb();
+    }
+  },
+  merge(sessionId, context, entities, message, cb) {
+    // Retrieve the location entity and store it into a context field
+    const loc = firstEntityValue(entities, 'location');
+    if (loc) {
+      context.loc = loc; // store it in context
+    }
+
+    cb(context);
+  },
+
+  error(sessionId, context, error) {
+    console.log(error.message);
+  },
+
+  // fetch-weather bot executes
+  ['fetch-weather'](sessionId, context, cb) {
+    // Here should go the api call, e.g.:
+    // context.forecast = apiCall(context.loc)
+    context.forecast = 'sunny';
+    cb(context);
+  },
+};
 
 
+const getWit = () => {
+  return new Wit(Config.WIT_TOKEN, actions);
+};
 
-module.exports = {
-	findOrCreateSession: findOrCreateSession,
-	read: read,
+exports.getWit = getWit;
+
+// bot testing mode
+// http://stackoverflow.com/questions/6398196
+if (require.main === module) {
+  console.log("Bot testing mode.");
+  const client = getWit();
+  client.interactive();
 }
