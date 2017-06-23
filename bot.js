@@ -29,7 +29,7 @@ const actions = {
 
     // Our bot has something to say!
     // Hent facebook-bruker session
-    // TODO: need to get Facebook user name
+    // TODO: Hent facebook username?
     const recipientId = context._fbid_;
     if (recipientId) {
       // Fant mottaker
@@ -54,10 +54,12 @@ const actions = {
     }
   },
   merge(sessionId, context, entities, message, cb) {
-    // Henter entity og lagrer i loc
-    const loc = firstEntityValue(entities, 'location');
-    if (loc) {
-      context.loc = loc; // lagrer i context
+    // Resetter link-context
+    delete context.links 
+    // Henter entity og lagrer i context
+    const category = firstEntityValue(entities, 'intent');
+    if (category) {
+      context.cat = category; // lagrer i context
     }
 
     cb(context);
@@ -67,13 +69,13 @@ const actions = {
     console.log(error.message);
   },
 
-  // fetch-weather bot executes
-  ['fetch-weather'](sessionId, context, cb) {
-    // Here should go the api call, e.g.:
-    // context.forecast = apiCall(context.loc)
-    context.forecast = 'sunny';
-    cb(context);
-  },
+  // Links til brukerveiledning
+  	['fetch-links'](sessionId, context, cb) {
+		const wantedLinks = allLinks[context.cat || 'default']
+		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
+
+		cb(context)
+	},
 };
 
 
@@ -90,3 +92,12 @@ if (require.main === module) {
   const client = getWit();
   client.interactive();
 }
+
+//Liste over lenker til brukerdokumentasjon:
+
+const allLinks = {
+  default: [''],
+  Nettleser: ['https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/'],
+  Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
+
+};
