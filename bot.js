@@ -32,6 +32,14 @@ const actions = {
     // TODO: Hent facebook username?
     const recipientId = context._fbid_;
     if (recipientId) {
+		 if(message.quickreplies) { // Wit.ai vil bruke quickreply!!
+          message.quick_replies = ["ja","nei"];
+
+          for(var i = 0, len = message.quickreplies.length; i < len; i++) { // Loop through quickreplies
+              message.quick_replies.push({ title: message.quickreplies[i], content_type: 'text', payload: 'CUSTOM_TEXT' });
+          }
+          delete message.quickreplies;
+      }
       // Fant mottaker
       // Sender bot respons.
       FB.fbMessage(recipientId, message, (err, data) => {
@@ -55,9 +63,7 @@ const actions = {
   },
   merge(sessionId, context, entities, message, cb) {
     // Resetter link-context
-    delete context.cat
-	delete context.links
-
+    delete context.links 
     // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
     if (category) {
@@ -73,25 +79,11 @@ const actions = {
 
   // Links til brukerveiledning
   	['fetch-links'](sessionId, context, cb) {
-		var wantedLinks = allLinks[context.cat || 'default']
+		const wantedLinks = allLinks[context.cat || 'default']
 		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
-		var question = {
-		   "type": "survey",
-			 "question": "Her er veiledningen",
-			 "msgid": "3er45",
-			 "options": [
-					{
-					  "type": "url",
-					  "title": "Nettleser",
-					  "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"
-					}
-				   ]
-				 }; 
-		  context.sendResponse(JSON.stringify(question));  		
+
 		cb(context)
 	},
-	
-	
 };
 
 
@@ -112,7 +104,7 @@ if (require.main === module) {
 //Liste over lenker til brukerdokumentasjon:
 
 const allLinks = {
-  default: ['default'],
+  default: [''],
   Nettleser: ['https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/'],
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
