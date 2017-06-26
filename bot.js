@@ -64,7 +64,7 @@ const actions = {
     // Resetter link-context
     delete context.cat
 	delete context.links
-
+	delete context.sendResponse
     // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
     if (category) {
@@ -82,6 +82,21 @@ const actions = {
   	['fetch-links'](sessionId, context, cb) {
 		var wantedLinks = allLinks[context.cat || 'default']
 		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
+		var question = {
+		   "type": "survey",
+			 "question": "Her er veiledningen",
+			 "msgid": "3er45",
+			 "options": [
+					{
+					  "type": "url",
+					  "title": "Nettleser",
+					  "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"
+					}
+				   ]
+		 }; 
+		context.sendResponse(JSON.stringify(question));     
+ 
+  }
 
 		cb(context)
 	},
@@ -108,10 +123,9 @@ if (require.main === module) {
 
 const allLinks = {
   default: ['default'],
-  // Nettleser: ['https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/'],
+  Nettleser: ['https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/'],
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
   
-  const Nettleserstr = "Nettleser"
-  const Nettleser = Nettleserstr.link('https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/')
+
 
 };
