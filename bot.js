@@ -32,13 +32,6 @@ const actions = {
     // TODO: Hent facebook username?
     const recipientId = context._fbid_;
     if (recipientId) {
-		if(response.quickreplies) { // Wit.ai wants us to include quickreplies, alright!
-          response.quick_replies = ["yes", "no"];
-
-          for(var i = 0, len = response.quickreplies.length; i < len; i++) { // Loop through quickreplies
-              response.quick_replies.push({ title: response.quickreplies[i], content_type: 'text', payload: 'CUSTOM_TEXT' });
-          }
-          delete response.quickreplies;
       // Fant mottaker
       // Sender bot respons.
       FB.fbMessage(recipientId, message, (err, data) => {
@@ -64,7 +57,7 @@ const actions = {
     // Resetter link-context
     delete context.cat
 	delete context.links
-	delete context.sendResponse
+
     // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
     if (category) {
@@ -93,11 +86,8 @@ const actions = {
 					  "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"
 					}
 				   ]
-		 }; 
-		context.sendResponse(JSON.stringify(question));     
- 
-  }
-
+				 }; 
+		  context.sendResponse(JSON.stringify(question));  		
 		cb(context)
 	},
 	
@@ -125,7 +115,5 @@ const allLinks = {
   default: ['default'],
   Nettleser: ['https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/'],
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
-  
-
 
 };
