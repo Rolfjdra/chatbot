@@ -116,9 +116,9 @@ app.post('/webhook', (req, res) => {
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel:
-            // if (context['done']) {
-            //   delete sessions[sessionId];
-            // }
+            if (context['done']) {
+            delete sessions[sessionId];
+            }
 
             // oppdater session state
             sessions[sessionId].context = context;
