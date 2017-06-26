@@ -112,16 +112,17 @@ app.post('/webhook', (req, res) => {
             // bot er ferdig
             // Venter på mer input
             console.log('Venter på meldinger');
-
+			
+			// oppdater session state
+            sessions[sessionId].context = context;
+			 
             // Reset session?
             // Kanskje med annen logikk..
-            // Eksempel:
-            if (context['done']) {
+            // Eksempel: Prøver med "intent"
+            if (context.links) {
             delete sessions[sessionId];
             }
-
-            // oppdater session state
-            sessions[sessionId].context = context;
+           
           }
         }
       );
