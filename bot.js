@@ -55,7 +55,9 @@ const actions = {
   },
   merge(sessionId, context, entities, message, cb) {
     // Resetter link-context
-    delete context.cat 
+    delete context.cat
+	delete context.links
+	
     // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
     if (category) {
