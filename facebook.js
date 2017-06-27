@@ -61,5 +61,4 @@ module.exports = {
   getFirstMessagingEntry: getFirstMessagingEntry,
   fbMessage: fbMessage,
   fbReq: fbReq,
-  fbMessage2: fbMessage2
 };
