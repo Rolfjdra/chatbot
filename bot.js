@@ -54,21 +54,6 @@ const actions = {
       cb();
     }
   },
-  send({sessionId}, response) {
-	  const recipientId = sessions[sessionId].fbid
-	  if(recipientId) {
-		  if (response.quick_replies){
-			   response.quick_replies = ["ja","nei"];
-
-			   for(var i = 0, len = response.quick_replies.length; i < len; i++) { // Loop through quickreplies
-					response.quick_replies.push({ title: response.quick_replies[i], content_type: 'text', payload: 'janei' });
-          }
-		  return FB.fbMessage2(recipientId,response)
-		  
-		}
-	}
-	  cb();
-  },
 		  
   merge(sessionId, context, entities, message, cb) {
     // Resetter link-context

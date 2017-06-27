@@ -37,17 +37,6 @@ const fbMessage = (recipientId, msg, cb) => {
     }
   });
 };
-
-const fbMessage2 = {id,data) => {
-	const body = JSON.stringify({
-		recipient: {id},
-		message: data,
-	});
-	const qs = access_token
-	return fetch('https://graph.facebook.com/me/messages?' + qs);
-	}
-
-};
 	
 
 
