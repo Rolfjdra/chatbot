@@ -144,8 +144,12 @@ function sendGenericMessage(sender) {
 					"type": "web_url",
 				    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
 				    "title": "vis brukerveiledning",
-				    }]
-			    
+				   , {
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for first element in a generic bubble",
+				    }
+			    }]
 		    }
 	    }
     }
