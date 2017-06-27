@@ -138,8 +138,9 @@ function sendGenericMessage(sender) {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
-				"template_type": "button",
-				"text": "testbuttons",
+				"template_type": "generic",
+				"elements": [{
+				"title": "Brukerveiledning",
 				"buttons":[
 				  {
 					"type":"web_url",
@@ -149,6 +150,7 @@ function sendGenericMessage(sender) {
 					"fallback_url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"
 				  }
 				]
+				}]
 			    }
 		    }
 	    }
