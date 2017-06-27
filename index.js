@@ -57,6 +57,7 @@ app.get('/', function(req, res) {
 });
 
 // Webhook verify setup using FB_VERIFY_TOKEN
+const token = Config.FB_PAGE_TOKEN;
 app.get('/webhook', (req, res) => {
   if (!Config.FB_VERIFY_TOKEN) {
     throw new Error('missing FB_VERIFY_TOKEN');
