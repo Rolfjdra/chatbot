@@ -3,6 +3,7 @@
 // DFO-chatbot under utvikling
 const bodyParser = require('body-parser');
 const express = require('express');
+const request = require('request');
 
 // Henter bot, vertifikasjoner, og FB API
 const bot = require('./bot.js');
