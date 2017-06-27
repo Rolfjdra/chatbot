@@ -79,7 +79,7 @@ app.post('/webhook', (req, res) => {
 
     // Henter Facebook user ID
     const sender = messaging.sender.id;
-	sendGenericMessage(sender)
+
     // Hent session, eller lag ny
     // Finner samtalehistorikk
     const sessionId = findOrCreateSession(sender);
