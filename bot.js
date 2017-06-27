@@ -38,8 +38,10 @@ const actions = {
           for(var i = 0, len = message.quickreplies.length; i < len; i++) { // Loop through quickreplies
               message.quick_replies.push({ title: message.quickreplies[i], content_type: 'text', payload: 'CUSTOM_TEXT' });
           }
+		  return FB.fbMessage(recipientId,message)
           delete message.quickreplies;
       }
+	  
       // Fant mottaker
       // Sender bot respons.
       FB.fbMessage(recipientId, message, (err, data) => {
