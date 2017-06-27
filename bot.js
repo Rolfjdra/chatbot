@@ -169,3 +169,4 @@ function sendGenericMessage(sender) {
 	    }
     })
 }
+exports.sendGenericMessage(sender) = sendGenericMessage(sender);
