@@ -143,11 +143,10 @@ function sendGenericMessage(sender) {
 				"buttons":[
 				  {
 					"type":"web_url",
-					"url":""https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"",
+					"url":"https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
 					"title":"Brukerveiledning",
 					"webview_height_ratio": "full",
-					"messenger_extensions": true,  
-					"fallback_url": ""https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/""
+					"fallback_url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"
 				  }
 				]
 			    }
