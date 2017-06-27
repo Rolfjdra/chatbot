@@ -132,7 +132,7 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-
+// under utvikling 
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
@@ -144,15 +144,15 @@ function sendGenericMessage(sender) {
 					"type": "web_url",
 				    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
 				    "title": "vis brukerveiledning",
-				   , {
+				}, {
 					    "type": "postback",
 					    "title": "Postback",
 					    "payload": "Payload for first element in a generic bubble",
-				    }
-			    }]
+				    }]
+			    }
 		    }
 	    }
-    }
+    
     request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
