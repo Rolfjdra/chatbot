@@ -138,21 +138,14 @@ function sendGenericMessage(sender) {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
-				"template_type": "generic",
-			    "elements": [{
-					"title": "DFO",
-				    "subtitle": "Brukerveiledning",
-				    "image_url": "https://dfo.no/Images/logo_dfo.png",
-				    "buttons": [{
-					    "type": "web_url",
-					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
-					    "title": "web url"
-				    }, {
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
+				"template_type": "button",
+				"text": "",
+			    "buttons": [{
+					"type": "web_url",
+				    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+				    "title": "vis brukerveiledning",
 				    }]
-			    }]
+			    
 		    }
 	    }
     }
