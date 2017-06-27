@@ -64,9 +64,6 @@ const actions = {
     const category = firstEntityValue(entities, 'intent');
     if (category) {
       context.cat = category; // lagrer i context
-	   // under utvikling
-	 /// let sender = sessionId
-	 /// sendGenericMessage(sender)
     }
 
     cb(context);
@@ -107,6 +104,3 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
-
-
-

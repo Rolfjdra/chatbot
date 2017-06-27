@@ -79,7 +79,7 @@ app.post('/webhook', (req, res) => {
 
     // Henter Facebook user ID
     const sender = messaging.sender.id;
-
+	sendGenericMessage(sender)
     // Hent session, eller lag ny
     // Finner samtalehistorikk
     const sessionId = findOrCreateSession(sender);
@@ -98,8 +98,6 @@ app.post('/webhook', (req, res) => {
       );
     } else if (msg) {
       // Mottok meldingstekst
-	    const sender = sessionId;
-		sendGenericMessage(sender)
       // Sender melding til wit.ai
       // Kjør actions
       wit.runActions(
