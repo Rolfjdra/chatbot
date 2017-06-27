@@ -32,14 +32,14 @@ const actions = {
     // TODO: Hent facebook username?
     const recipientId = context._fbid_;
     if (recipientId) {
-		 if(message.quickreplies) { // Wit.ai vil bruke quickreply!!
+		 if(message.quick_replies) { // Wit.ai vil bruke quickreply!!
           message.quick_replies = ["ja","nei"];
 
-          for(var i = 0, len = message.quickreplies.length; i < len; i++) { // Loop through quickreplies
-              message.quick_replies.push({ title: message.quickreplies[i], content_type: 'text', payload: 'CUSTOM_TEXT' });
+          for(var i = 0, len = message.quick_replies.length; i < len; i++) { // Loop through quickreplies
+              message.quick_replies.push({ title: message.quick_replies[i], content_type: 'text', payload: 'janei' });
           }
 		  return FB.fbMessage(recipientId,message)
-          delete message.quickreplies;
+          delete message.quick_replies;
       }
 	  
       // Fant mottaker
