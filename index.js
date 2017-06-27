@@ -132,34 +132,30 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-// under utvikling 
+
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
 				"template_type": "generic",
-				"elements": [{
-				"title": "Brukerveiledning",
-				"buttons":[
-				  {
-					"type":"web_url",
-					"url":"https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
-					"title":"Brukerveiledning",
-					"webview_height_ratio": "full",
-					"fallback_url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"
-				  },
-				  {
-                "type":"postback",
-                "title":"knapp",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }              
-				]
-				}]
-			    }
+			    "elements": [{
+					"title": "DFO",
+				    "subtitle": "Brukerveiledning",
+				    "image_url": "https://dfo.no/Images/logo_dfo.png",
+				    "buttons": [{
+					    "type": "web_url",
+					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+					    "title": "web url"
+				    }, {
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for first element in a generic bubble",
+				    }]
+			    }]
 		    }
 	    }
-    
+    }
     request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
