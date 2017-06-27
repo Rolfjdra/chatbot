@@ -75,34 +75,9 @@ const actions = {
   	['fetch-links'](sessionId, context, cb) {
 		const wantedLinks = allLinks[context.cat || 'default']
 		// context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
-		links: { attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: "DFO",
-            subtitle: "brukerveiledning",
-            item_url: "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",               
-            image_url: "https://dfo.no/Images/logo_dfo.png",
-            buttons: [{
-              type: "web_url",
-              url: "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
-              title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
-            }],
-          }
+		if context.links {
+			sendGenericMessage(sender)
 		}
-		}}
-
-		
-		
-		
-		
-		
-		
 		cb(context)
 	},
 };
@@ -130,5 +105,49 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
+
+
+function sendGenericMessage(sender) {
+    let messageData = {
+	   attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "DFO",
+            subtitle: "brukerveiledning",
+            item_url: "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",               
+            image_url: "https://dfo.no/Images/logo_dfo.png",
+            buttons: [{
+              type: "web_url",
+              url: "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+              title: "Open Web URL"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for first bubble",
+            }],
+          }
+		}
+		}
+    }
+    request({
+	    url: 'https://graph.facebook.com/v2.6/me/messages',
+	    qs: {access_token:token},
+	    method: 'POST',
+	    json: {
+		    recipient: {id:sender},
+		    message: messageData,
+	    }
+    }, function(error, response, body) {
+	    if (error) {
+		    console.log('Error sending messages: ', error)
+	    } else if (response.body.error) {
+		    console.log('Error: ', response.body.error)
+	    }
+    })
+}
+
+
 
  
