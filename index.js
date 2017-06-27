@@ -149,6 +149,11 @@ function sendGenericMessage(sender) {
 					"webview_height_ratio": "full",
 					"fallback_url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"
 				  }
+				  {
+                "type":"postback",
+                "title":"knapp",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              }              
 				]
 				}]
 			    }
