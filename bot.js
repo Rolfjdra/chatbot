@@ -65,7 +65,8 @@ const actions = {
     if (category) {
       context.cat = category; // lagrer i context
 	   // under utvikling
-	  sendGenericMessage(sender)
+	 // let sender = sessionId
+	 // sendGenericMessage(sender)
     }
 
     cb(context);
