@@ -98,7 +98,8 @@ app.post('/webhook', (req, res) => {
       );
     } else if (msg) {
       // Mottok meldingstekst
-		bot.sendGenericMessage(sessionId)
+	    const sender = sessionId;
+		bot.sendGenericMessage(sender)
       // Sender melding til wit.ai
       // Kjør actions
       wit.runActions(

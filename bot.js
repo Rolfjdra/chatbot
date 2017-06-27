@@ -66,7 +66,7 @@ const actions = {
       context.cat = category; // lagrer i context
 	   // under utvikling
 	 /// let sender = sessionId
-	 // /sendGenericMessage(sender)
+	 /// sendGenericMessage(sender)
     }
 
     cb(context);
@@ -79,7 +79,7 @@ const actions = {
   // Links til brukerveiledning
   	['fetch-links'](sessionId, context, cb) {
 		const wantedLinks = allLinks[context.cat || 'default']
-		// context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
+		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
 		cb(context)
 	},
 };
@@ -103,7 +103,28 @@ if (require.main === module) {
 
 const allLinks = {
   default: [''],
-  Nettleser: ['https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/'],
+  Nettleser: {
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "generic",
+			    "elements": [{
+					"title": "DFO",
+				    "subtitle": "Brukerveiledning",
+				    "image_url": "https://dfo.no/Images/logo_dfo.png",
+				    "buttons": [{
+					    "type": "web_url",
+					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+					    "title": "web url"
+				    }, {
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for first element in a generic bubble",
+				    }]
+			    }]
+		    }
+	    }
+    },
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
