@@ -44,7 +44,9 @@ const fbMessage2 = {id,data) => {
 		message: data,
 	});
 	const qs = 'access_token=' + encodeURIComponent(Config.FB_PAGE_TOKEN);
-	return fetch('https://graph.facebook.com/me/messages?' + qs, {
+	return fetch('https://graph.facebook.com/me/messages?' + qs;
+	}
+};
 	
 
 
