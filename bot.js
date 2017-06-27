@@ -70,12 +70,12 @@ const actions = {
   error(sessionId, context, error) {
     console.log(error.message);
   },
-
+  // under utvikling
   // Links til brukerveiledning
   	['fetch-links'](sessionId, context, cb) {
 		const wantedLinks = allLinks[context.cat || 'default']
 		// context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
-		context.links = attachment: {
+		links: { attachment: {
         type: "template",
         payload: {
           template_type: "generic",
@@ -95,7 +95,7 @@ const actions = {
             }],
           }
 		}
-	}
+		}}
 
 		
 		
