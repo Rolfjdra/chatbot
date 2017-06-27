@@ -62,6 +62,8 @@ const actions = {
     const category = firstEntityValue(entities, 'intent');
     if (category) {
       context.cat = category; // lagrer i context
+	   // under utvikling
+	  sendGenericMessage(sender)
     }
 
     cb(context);
@@ -70,14 +72,11 @@ const actions = {
   error(sessionId, context, error) {
     console.log(error.message);
   },
-  // under utvikling
+ 
   // Links til brukerveiledning
   	['fetch-links'](sessionId, context, cb) {
 		const wantedLinks = allLinks[context.cat || 'default']
 		// context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
-		if context.links {
-			sendGenericMessage(sender)
-		}
 		cb(context)
 	},
 };
