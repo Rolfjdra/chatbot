@@ -15,6 +15,7 @@ const firstEntityValue = (entities, entity) => {
   }
   return typeof val === 'object' ? val.value : val;
 };
+const token = Config.FB_PAGE_TOKEN;
 
 // Bot actions
 const actions = {
@@ -108,27 +109,35 @@ const allLinks = {
 
 function sendGenericMessage(sender) {
     let messageData = {
-	   attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: "DFO",
-            subtitle: "brukerveiledning",
-            item_url: "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",               
-            image_url: "https://dfo.no/Images/logo_dfo.png",
-            buttons: [{
-              type: "web_url",
-              url: "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
-              title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
-            }],
-          }
-		}
-		}
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "generic",
+			    "elements": [{
+					"title": "DFO",
+				    "subtitle": "Brukerveiledning",
+				    "image_url": "https://dfo.no/Images/logo_dfo.png",
+				    "buttons": [{
+					    "type": "web_url",
+					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+					    "title": "web url"
+				    }, {
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for first element in a generic bubble",
+				    }],
+			    }, {
+				    "title": "Second card",
+				    "subtitle": "Element #2 of an hscroll",
+				    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+				    "buttons": [{
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for second element in a generic bubble",
+				    }],
+			    }]
+		    }
+	    }
     }
     request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -146,7 +155,3 @@ function sendGenericMessage(sender) {
 	    }
     })
 }
-
-
-
- 
