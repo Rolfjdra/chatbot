@@ -4,6 +4,7 @@
 const Wit = require('node-wit').Wit;
 const FB = require('./facebook.js');
 const Config = require('./config.js');
+const request = require('request');
 
 const firstEntityValue = (entities, entity) => {
   const val = entities && entities[entity] &&
@@ -125,16 +126,7 @@ function sendGenericMessage(sender) {
 					    "type": "postback",
 					    "title": "Postback",
 					    "payload": "Payload for first element in a generic bubble",
-				    }],
-			    }, {
-				    "title": "Second card",
-				    "subtitle": "Element #2 of an hscroll",
-				    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-				    "buttons": [{
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for second element in a generic bubble",
-				    }],
+				    }]
 			    }]
 		    }
 	    }
