@@ -105,7 +105,6 @@ app.post('/webhook', (req, res) => {
         sessionId, // aktiv session
         msg, // the user's message 
         sessions[sessionId].context, // session state
-		sendGenericMessage(sender), //link
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
@@ -131,43 +130,3 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-
-function sendGenericMessage(sender) {
-	let messageData = {
-		"attachment": {
-			"type": "template",
-			"payload": {
-				"template_type": "generic",
-				"elements": [{
-					"title": "Link",
-					"subtitle": "Brukerveiledning",
-					"image_url": "http://www.qygjxz.com/data/out/206/5611472-simple-images.png",
-					"buttons": [{
-						"type": "web_url",
-						"url": "www.vg.no",
-						"title": "web url"
-					}, {
-						"type": "postback",
-						"title": "Postback",
-						"payload": "Payload for first element in a generic bubble",
-					}],
-				}, 
-			}
-		}
-	}
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
-		method: 'POST',
-		json: {
-			recipient: {id:sender},
-			message: messageData,
-		}
-	}, function(error, response, body) {
-		if (error) {
-			console.log('Error sending messages: ', error)
-		} else if (response.body.error) {
-			console.log('Error: ', response.body.error)
-		}
-	})
-}
