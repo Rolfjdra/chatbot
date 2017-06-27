@@ -29,12 +29,23 @@ const fbMessage = (recipientId, msg, cb) => {
     },
   };
 
+	  
+
   fbReq(opts, (err, resp, data) => {
     if (cb) {
       cb(err || data.error && data.error.message, data);
     }
   });
 };
+
+const fbMessage2 = {id,data) => {
+	const body = JSON.stringify({
+		recipient: {id},
+		message: data,
+	});
+	const qs = 'access_token=' + encodeURIComponent(Config.FB_PAGE_TOKEN);
+	return fetch('https://graph.facebook.com/me/messages?' + qs, {
+	
 
 
 // See the Webhook reference
