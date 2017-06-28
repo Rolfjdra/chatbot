@@ -145,4 +145,4 @@ function sendGenericMessage(sender) {
     })
 }
 
-exports.sendGenericMessage = sendGenericMessage;
+exports.sendGenericMessage(sender) = sendGenericMessage(sender);

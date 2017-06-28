@@ -12,7 +12,7 @@ const FB = require('./facebook.js');
 const wit = bot.getWit();
 
 // henter generic
-const sendGenericMessage = bot.sendGenericMessage()
+const sendGenericMessage(sender) = bot.sendGenericMessage(sender)
 // Webserver parameter
 const PORT = process.env.PORT || 8445;
 
