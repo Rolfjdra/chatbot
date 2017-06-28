@@ -106,7 +106,7 @@ app.post('/webhook', (req, res) => {
         sessionId, // aktiv session
         msg, // the user's message 
         sessions[sessionId].context, // session state
-		if context.links {
+		if (context.links) {
 		sendGenericMessage(sender)
 		}
         (error, context) => {
