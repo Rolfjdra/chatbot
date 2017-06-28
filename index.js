@@ -113,7 +113,7 @@ app.post('/webhook', (req, res) => {
             // bot er ferdig
             // Venter på mer input
             console.log('Venter på meldinger');
-			const messageData2 = bot.GenericMessage(messageData);
+			
 			// oppdater session state
             sessions[sessionId].context = context;
 			sendGenericMessage(sender, messageData2)
@@ -131,7 +131,7 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-
+const messageData2 = bot.GenericMessage(messageData);
 function sendGenericMessage(sender, messageData){
 		let messageData2 = messageData
 	    request({
