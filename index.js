@@ -121,7 +121,6 @@ app.post('/webhook', (req, res) => {
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
             if (context.links) {
-				sendGenericMessage(sender),
 				delete sessions[sessionId];
             }
            
