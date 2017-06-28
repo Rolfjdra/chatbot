@@ -68,7 +68,8 @@ const actions = {
     if (category) {
       context.cat = category; // lagrer i context
 	  const wantedLinks2 = allLinks[context.cat || 'default']
-	  const jsonlink = JSON.stringify(wantedLinks2);
+	  // const jsonlink = JSON.stringify(wantedLinks2);
+	  const strwantedLinks2 = stringify(wantedLinks2);
 	  const messageData = {
 	    "attachment": {
 		    "type": "template",
@@ -80,7 +81,7 @@ const actions = {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    "url": jsonlink,
+					    "url": strwantedLinks2,
 					    "title": "web url"
 				    }, {
 					    "type": "postback",
