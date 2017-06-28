@@ -105,11 +105,11 @@ app.post('/webhook', (req, res) => {
       wit.runActions(
         sessionId, // aktiv session
         msg, // the user's message 
-        sessions[sessionId].context, // session state
-		if (sessions[sessionId].context == cat) {
-			sendGenericMessage(sender)
-		}
+        sessions[sessionId].context // session state
         (error, context) => {
+		  if (context.links) {
+			  sendGenericMessage(sender)
+		  }
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
           } else {
