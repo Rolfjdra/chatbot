@@ -60,10 +60,16 @@ const actions = {
   merge(sessionId, context, entities, message, cb) {
     // Resetter link-context
     delete context.links 
+	delete context.cat
+	delete category
+	
     // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
     if (category) {
       context.cat = category; // lagrer i context
+	  const wantedLinks2 = allLinks[context.cat || 'default']
+	  
+	  
     }
 
     cb(context);
@@ -104,3 +110,29 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
+function GenericMessage(wantedLinks2) {
+    let messageData = {
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "generic",
+			    "elements": [{
+					"title": "DFO",
+				    "subtitle": "Brukerveiledning",
+				    "image_url": "https://dfo.no/Images/logo_dfo.png",
+				    "buttons": [{
+					    "type": "web_url",
+					    "url": wantedLinks2,
+					    "title": "web url"
+				    }, {
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for first element in a generic bubble",
+				    }]
+			    }]
+		    }
+	    }
+    }
+	return messageData
+
+}
