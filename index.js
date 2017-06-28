@@ -113,10 +113,10 @@ app.post('/webhook', (req, res) => {
             // bot er ferdig
             // Venter på mer input
             console.log('Venter på meldinger');
-			
+			const messageData2 = bot.GenericMessage(messageData);
 			// oppdater session state
             sessions[sessionId].context = context;
-			sendGenericMessage(sender)
+			sendGenericMessage(sender, messageData2)
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
@@ -132,36 +132,15 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 
-function sendGenericMessage(sender) {
-    let messageData = {
-	    "attachment": {
-		    "type": "template",
-		    "payload": {
-				"template_type": "generic",
-			    "elements": [{
-					"title": "DFO",
-				    "subtitle": "Brukerveiledning",
-				    "image_url": "https://dfo.no/Images/logo_dfo.png",
-				    "buttons": [{
-					    "type": "web_url",
-					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
-					    "title": "web url"
-				    }, {
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
-				    }]
-			    }]
-		    }
-	    }
-    }
-    request({
+function sendGenericMessage(sender, messageData){
+		let messageData2 = messageData
+	    request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
 	    method: 'POST',
 	    json: {
 		    recipient: {id:sender},
-		    message: messageData,
+		    message: messageData2,
 	    }
     }, function(error, response, body) {
 	    if (error) {
@@ -170,4 +149,5 @@ function sendGenericMessage(sender) {
 		    console.log('Error: ', response.body.error)
 	    }
     })
+
 }
