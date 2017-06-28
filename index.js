@@ -107,9 +107,6 @@ app.post('/webhook', (req, res) => {
         msg, // the user's message 
         sessions[sessionId].context // session state
         (error, context) => {
-		  if (context.links) {
-			  sendGenericMessage(sender)
-		  }
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
           } else {
@@ -119,7 +116,8 @@ app.post('/webhook', (req, res) => {
 			
 			// oppdater session state
             sessions[sessionId].context = context;
-			 
+			sendGenericMessage(sender)
+			}
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
