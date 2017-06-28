@@ -77,6 +77,7 @@ const actions = {
   	['fetch-links'](sessionId, context, cb) {
 		const wantedLinks = allLinks[context.cat || 'default']
 		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
+		linkk = context.links;
 		cb(context)
 	},
 };
