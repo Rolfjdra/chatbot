@@ -6,6 +6,10 @@ const FB = require('./facebook.js');
 const Config = require('./config.js');
 const request = require('request');
 
+//for sendGenericMessage
+const messaging = FB.getFirstMessagingEntry(req.body);
+const sender = messaging.sender.id;
+
 const firstEntityValue = (entities, entity) => {
   const val = entities && entities[entity] &&
     Array.isArray(entities[entity]) &&
@@ -78,6 +82,7 @@ const actions = {
 		const wantedLinks = allLinks[context.cat || 'default']
 		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
 		cb(context)
+		sendGenericMessage(sender)
 	},
 };
 
@@ -86,7 +91,8 @@ const getWit = () => {
   return new Wit(Config.WIT_TOKEN, actions);
 };
 
-exports.getWit = getWit;
+
+
 
 // bot testing mode
 // http://stackoverflow.com/questions/6398196
@@ -104,3 +110,45 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
+
+function sendGenericMessage(sender) {
+    let messageData = {
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "generic",
+			    "elements": [{
+					"title": "DFO",
+				    "subtitle": "Brukerveiledning",
+				    "image_url": "https://dfo.no/Images/logo_dfo.png",
+				    "buttons": [{
+					    "type": "web_url",
+					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+					    "title": "web url"
+				    }, {
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for first element in a generic bubble",
+				    }]
+			    }]
+		    }
+	    }
+    }
+    request({
+	    url: 'https://graph.facebook.com/v2.6/me/messages',
+	    qs: {access_token:token},
+	    method: 'POST',
+	    json: {
+		    recipient: {id:sender},
+		    message: messageData,
+	    }
+    }, function(error, response, body) {
+	    if (error) {
+		    console.log('Error sending messages: ', error)
+	    } else if (response.body.error) {
+		    console.log('Error: ', response.body.error)
+	    }
+    })
+}
+exports.getWit = getWit;
+exports.sendGenericMessage = sendGenericMessage;
