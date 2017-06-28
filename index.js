@@ -106,7 +106,9 @@ app.post('/webhook', (req, res) => {
         sessionId, // aktiv session
         msg, // the user's message 
         sessions[sessionId].context, // session state
-		sendGenericMessage(sender),
+		if context.links {
+		sendGenericMessage(sender)
+		}
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
@@ -132,7 +134,7 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-
+// under utvikling 
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
@@ -143,6 +145,7 @@ function sendGenericMessage(sender) {
 					"title": "DFO",
 				    "subtitle": "Brukerveiledning",
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
+					"image_aspect_ratio": "horizontal",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
@@ -156,6 +159,7 @@ function sendGenericMessage(sender) {
 		    }
 	    }
     }
+    
     request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
