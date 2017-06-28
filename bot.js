@@ -61,7 +61,6 @@ const actions = {
     // Resetter link-context
     delete context.links 
 	delete context.cat
-	delete category
 	
     // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
