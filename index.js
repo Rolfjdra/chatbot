@@ -106,9 +106,9 @@ app.post('/webhook', (req, res) => {
         sessionId, // aktiv session
         msg, // the user's message 
         sessions[sessionId].context, // session state
-		if (linkk) {
-		sendGenericMessage(sender)
-		}
+				if (linkk) {
+					sendGenericMessage(sender)
+						}
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
