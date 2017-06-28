@@ -110,8 +110,7 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
-function GenericMessage(wantedLinks2) {
-    let messageData = {
+const messageData = {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
@@ -133,7 +132,4 @@ function GenericMessage(wantedLinks2) {
 		    }
 	    }
     }
-	return messageData
-
-}
-exports.GenericMessage = GenericMessage;
+exports.messageData = messageData;
