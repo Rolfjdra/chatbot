@@ -1,8 +1,10 @@
 'use strict';
+
 // DFO-chatbot under utvikling
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
+
 // Henter bot, vertifikasjoner, og FB API
 const bot = require('./bot.js');
 const Config = require('./config.js');
@@ -10,6 +12,7 @@ const FB = require('./facebook.js');
 
 // Setter opp bot
 const wit = bot.getWit();
+
 // Webserver parameter
 const PORT = process.env.PORT || 8445;
 
@@ -78,9 +81,6 @@ app.post('/webhook', (req, res) => {
 
     // Henter Facebook user ID
     const sender = messaging.sender.id;
-	
-	// henter generic
-	var sendGenericMessage(sender) = bot.sendGenericMessage(sender);
 
     // Hent session, eller lag ny
     // Finner samtalehistorikk
@@ -113,10 +113,10 @@ app.post('/webhook', (req, res) => {
             // bot er ferdig
             // Venter på mer input
             console.log('Venter på meldinger');
-			
+			const messageData = bot.messageData;
 			// oppdater session state
             sessions[sessionId].context = context;
-			sendGenericMessage(sender)
+			sendGenericMessage(sender, messageData)
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
@@ -132,5 +132,21 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 
-;
+function sendGenericMessage(sender, messageData){
+	    request({
+	    url: 'https://graph.facebook.com/v2.6/me/messages',
+	    qs: {access_token:token},
+	    method: 'POST',
+	    json: {
+		    recipient: {id:sender},
+		    message: messageData,
+	    }
+    }, function(error, response, body) {
+	    if (error) {
+		    console.log('Error sending messages: ', error)
+	    } else if (response.body.error) {
+		    console.log('Error: ', response.body.error)
+	    }
+    })
 
+}

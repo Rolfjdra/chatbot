@@ -64,6 +64,9 @@ const actions = {
     const category = firstEntityValue(entities, 'intent');
     if (category) {
       context.cat = category; // lagrer i context
+	  const wantedLinks2 = allLinks[context.cat || 'default']
+	  
+	  
     }
 
     cb(context);
@@ -104,8 +107,7 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
-
-function sendGenericMessage(sender) {
+function GenericMessage(wantedLinks2) {
     let messageData = {
 	    "attachment": {
 		    "type": "template",
@@ -117,7 +119,7 @@ function sendGenericMessage(sender) {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+					    "url": wantedLinks2,
 					    "title": "web url"
 				    }, {
 					    "type": "postback",
@@ -128,21 +130,6 @@ function sendGenericMessage(sender) {
 		    }
 	    }
     }
-    request({
-	    url: 'https://graph.facebook.com/v2.6/me/messages',
-	    qs: {access_token:token},
-	    method: 'POST',
-	    json: {
-		    recipient: {id:sender},
-		    message: messageData,
-	    }
-    }, function(error, response, body) {
-	    if (error) {
-		    console.log('Error sending messages: ', error)
-	    } else if (response.body.error) {
-		    console.log('Error: ', response.body.error)
-	    }
-    })
-}
+	exports.messageData = messageData;
 
-exports.sendGenericMessage(sender) = sendGenericMessage(sender);
+}
