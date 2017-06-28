@@ -105,7 +105,7 @@ app.post('/webhook', (req, res) => {
       wit.runActions(
         sessionId, // aktiv session
         msg, // the user's message 
-        sessions[sessionId].context // session state
+        sessions[sessionId].context, // session state
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
@@ -117,12 +117,11 @@ app.post('/webhook', (req, res) => {
 			// oppdater session state
             sessions[sessionId].context = context;
 			sendGenericMessage(sender)
-			}
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
             if (context.links) {
-				delete sessions[sessionId];
+            delete sessions[sessionId];
             }
            
           }
@@ -132,7 +131,7 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-// under utvikling 
+
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
@@ -143,7 +142,6 @@ function sendGenericMessage(sender) {
 					"title": "DFO",
 				    "subtitle": "Brukerveiledning",
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
-					"image_aspect_ratio": "horizontal",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
@@ -157,7 +155,6 @@ function sendGenericMessage(sender) {
 		    }
 	    }
     }
-    
     request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},

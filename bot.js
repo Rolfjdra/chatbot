@@ -58,8 +58,8 @@ const actions = {
   },
 		  
   merge(sessionId, context, entities, message, cb) {
-    // Resetter link-context?
-	
+    // Resetter link-context
+    delete context.links 
     // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
     if (category) {
@@ -78,7 +78,6 @@ const actions = {
 		const wantedLinks = allLinks[context.cat || 'default']
 		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
 		cb(context)
-		
 	},
 };
 
@@ -105,4 +104,3 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
-
