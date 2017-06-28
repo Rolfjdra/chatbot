@@ -11,8 +11,7 @@ const FB = require('./facebook.js');
 // Setter opp bot
 const wit = bot.getWit();
 
-// henter generic
-const sendGenericMessage(sender) = bot.sendGenericMessage(sender)
+
 // Webserver parameter
 const PORT = process.env.PORT || 8445;
 
@@ -81,6 +80,9 @@ app.post('/webhook', (req, res) => {
 
     // Henter Facebook user ID
     const sender = messaging.sender.id;
+	
+	// henter generic
+	const sendGenericMessage(sender) = bot.sendGenericMessage(sender);
 
     // Hent session, eller lag ny
     // Finner samtalehistorikk
