@@ -7,7 +7,7 @@ const Config = require('./config.js');
 const request = require('request');
 
 //for sendGenericMessage
-const messaging = FB.getFirstMessagingEntry(req.body);
+const messaging = FB.getFirstMessagingEntry(require.body);
 const sender = messaging.sender.id;
 
 const firstEntityValue = (entities, entity) => {
