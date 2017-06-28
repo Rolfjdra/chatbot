@@ -105,7 +105,7 @@ if (require.main === module) {
 //Liste over lenker til brukerdokumentasjon:
 
 const allLinks = {
-  default: [''],
+  default: ['https://www.vg.no'],
   Nettleser: ["https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"],
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
@@ -122,7 +122,7 @@ function GenericMessage(wantedLinks2) {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    "url": wantedLinks2,
+					    "url": 'https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf',
 					    "title": "web url"
 				    }, {
 					    "type": "postback",

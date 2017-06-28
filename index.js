@@ -113,10 +113,10 @@ app.post('/webhook', (req, res) => {
             // bot er ferdig
             // Venter på mer input
             console.log('Venter på meldinger');
-			const messageData = bot.GenericMessage(messageData);
+			const messageData2 = bot.GenericMessage(messageData);
 			// oppdater session state
             sessions[sessionId].context = context;
-			sendGenericMessage(sender, messageData)
+			sendGenericMessage(sender, messageData2)
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
