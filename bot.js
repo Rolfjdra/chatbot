@@ -136,3 +136,4 @@ function GenericMessage(wantedLinks2) {
 	return messageData
 
 }
+exports.GenericMessage = GenericMessage;
