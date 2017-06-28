@@ -78,6 +78,7 @@ const actions = {
 		const wantedLinks = allLinks[context.cat || 'default']
 		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
 		cb(context)
+		exports.wantedLinks = wantedLinks;
 	},
 };
 
@@ -87,7 +88,7 @@ const getWit = () => {
 };
 
 exports.getWit = getWit;
-// exports.wantedLinks = wantedLinks;
+
 
 // bot testing mode
 // http://stackoverflow.com/questions/6398196

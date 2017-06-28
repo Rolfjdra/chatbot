@@ -1,10 +1,8 @@
 'use strict';
-
 // DFO-chatbot under utvikling
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
-
 // Henter bot, vertifikasjoner, og FB API
 const bot = require('./bot.js');
 const Config = require('./config.js');
@@ -132,7 +130,7 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 
-// var wantedLinks = bot.wantedLinks;
+var wantedLinks = bot.wantedLinks;
 
 function sendGenericMessage(sender) {
     let messageData = {
