@@ -79,7 +79,7 @@ const actions = {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
+					    "url": wantedLinks2,
 					    "title": "web url"
 				    }, {
 					    "type": "postback",
