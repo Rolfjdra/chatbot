@@ -132,7 +132,7 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 
-var wantedLinks = bot.wantedLinks;
+// var wantedLinks = bot.wantedLinks;
 
 function sendGenericMessage(sender) {
     let messageData = {
@@ -146,7 +146,7 @@ function sendGenericMessage(sender) {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    "url": wantedLinks,
+					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
 					    "title": "web url"
 				    }, {
 					    "type": "postback",

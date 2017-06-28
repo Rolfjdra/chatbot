@@ -87,7 +87,7 @@ const getWit = () => {
 };
 
 exports.getWit = getWit;
-exports.wantedLinks = wantedLinks;
+// exports.wantedLinks = wantedLinks;
 
 // bot testing mode
 // http://stackoverflow.com/questions/6398196
