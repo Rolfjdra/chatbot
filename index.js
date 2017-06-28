@@ -116,7 +116,7 @@ app.post('/webhook', (req, res) => {
 			
 			// oppdater session state
             sessions[sessionId].context = context;
-			sendGenericMessage(sender, messageData2)
+			sendGenericMessage(sender)
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
@@ -132,8 +132,7 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 const messageData2 = bot.GenericMessage(messageData);
-function sendGenericMessage(sender, messageData){
-		let messageData2 = messageData
+function sendGenericMessage(sender, messageData2){
 	    request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
