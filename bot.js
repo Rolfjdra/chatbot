@@ -68,7 +68,29 @@ const actions = {
     if (category) {
       context.cat = category; // lagrer i context
 	  const wantedLinks2 = allLinks[context.cat || 'default']
-	  
+	  const messageData = {
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "generic",
+			    "elements": [{
+					"title": "DFO",
+				    "subtitle": "Brukerveiledning",
+				    "image_url": "https://dfo.no/Images/logo_dfo.png",
+				    "buttons": [{
+					    "type": "web_url",
+					    "url": wantedLinks2,
+					    "title": "web url"
+				    }, {
+					    "type": "postback",
+					    "title": "Postback",
+					    "payload": "Payload for first element in a generic bubble",
+				    }]
+			    }]
+		    }
+	    }
+    }
+	exports.messageData = messageData;
 	  
     }
 
@@ -110,26 +132,3 @@ const allLinks = {
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
 };
-const messageData = {
-	    "attachment": {
-		    "type": "template",
-		    "payload": {
-				"template_type": "generic",
-			    "elements": [{
-					"title": "DFO",
-				    "subtitle": "Brukerveiledning",
-				    "image_url": "https://dfo.no/Images/logo_dfo.png",
-				    "buttons": [{
-					    "type": "web_url",
-					    "url": wantedLinks2 || "https://www.vg.no",
-					    "title": "web url"
-				    }, {
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
-				    }]
-			    }]
-		    }
-	    }
-    }
-exports.messageData = messageData;
