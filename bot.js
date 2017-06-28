@@ -75,7 +75,7 @@ const actions = {
  
   // Links til brukerveiledning
   	['fetch-links'](sessionId, context, cb) {
-		export const wantedLinks = allLinks[context.cat || 'default']
+		const wantedLinks = allLinks[context.cat || 'default']
 		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
 		cb(context)
 	},
@@ -87,6 +87,7 @@ const getWit = () => {
 };
 
 exports.getWit = getWit;
+exports.wantedLinks = wantedLinks;
 
 // bot testing mode
 // http://stackoverflow.com/questions/6398196

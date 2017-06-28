@@ -1,10 +1,6 @@
 'use strict';
 
 // DFO-chatbot under utvikling
-
-import {wantedLinks} from './bot.js';
-console.log(wantedLinks);
-
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
@@ -135,6 +131,8 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
+
+var wantedLinks = bot.wantedLinks;
 
 function sendGenericMessage(sender) {
     let messageData = {
