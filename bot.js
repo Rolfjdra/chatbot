@@ -76,7 +76,6 @@ const actions = {
 		    "payload": {
 				"template_type": "generic",
 			    "elements": [{
-					"title": "DFO",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
