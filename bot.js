@@ -78,12 +78,10 @@ const actions = {
 		    "payload": {
 				"template_type": "button",
 				"text": "Her er veiledningen"
-			    "elements": [{
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
 					    "title": myTitle
-				    }]
 			    }]
 		    }
 	    }
