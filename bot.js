@@ -77,11 +77,10 @@ const actions = {
 				"template_type": "generic",
 			    "elements": [{
 					"title": "DFO",
-				    "subtitle": "Brukerveiledning",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
-					    "title": "web url"
+					    "title": "brukerveiledning"
 				    }]
 			    }]
 		    }
