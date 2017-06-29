@@ -123,6 +123,6 @@ const allLinks = {
 };
 const allTitles = {
 	default: ['ingen context?']
-	Nettleser: ["instruks for nettleser"];
-	Sperret: ["Jeg har sperret meg selv"]
+	Nettleser: ["instruks for nettleser"],
+	Sperret: ["Jeg har sperret meg selv"],
 };
