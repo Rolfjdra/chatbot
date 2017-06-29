@@ -79,7 +79,7 @@ const actions = {
 				"template_type": "generic",
 				"elements":[
 				{
-				"title": "Du finner informasjon om dette her:",
+				"title": "Brukerveiledning:",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
