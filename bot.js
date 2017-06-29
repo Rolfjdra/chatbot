@@ -79,11 +79,12 @@ const actions = {
 				"template_type": "generic",
 				"elements":[
 				{
-				"title": "Her er veiledningen",
+				"title": "Du finner informasjon om dette her:",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
-					    "title": myTitle
+					    "title": myTitle,
+						"webview_height_ratio": "comapct"
 			    }]
 				}]
 		    }
