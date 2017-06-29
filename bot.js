@@ -58,36 +58,12 @@ const actions = {
   },
 		  
   merge(sessionId, context, entities, message, cb) {
-    // Resetter cat
-	delete context.cat
-    // Henter entity og lagrer i context/
-	
+    // Resetter link-context
+    delete context.links 
+    // Henter entity og lagrer i context
     const category = firstEntityValue(entities, 'intent');
     if (category) {
       context.cat = category; // lagrer i context
-	  const wantedLinks = allLinks[context.cat || 'default']
-	  const myLink = wantedLinks.toString();
-	  const wantedTitle = allTitles[context.cat || 'default']
-	  const myTitle = wantedTitle.toString();
-	  const messageData = {
-	    "attachment": {
-		    "type": "template",
-		    "payload": {
-				"template_type": "generic",
-				"elements":[
-				{
-				"title": "Brukerveiledning:",
-				    "buttons": [{
-					    "type": "web_url",
-					    "url": myLink,
-					    "title": myTitle
-			    }]
-				}]
-		    }
-	    }
-    }
-	exports.messageData = messageData;
-	  
     }
 
     cb(context);
@@ -96,6 +72,13 @@ const actions = {
   error(sessionId, context, error) {
     console.log(error.message);
   },
+ 
+  // Links til brukerveiledning
+  	['fetch-links'](sessionId, context, cb) {
+		const wantedLinks = allLinks[context.cat || 'default']
+		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
+		cb(context)
+	},
 };
 
 
@@ -116,13 +99,8 @@ if (require.main === module) {
 //Liste over lenker til brukerdokumentasjon:
 
 const allLinks = {
-  default: ['https://www.vg.no'],
+  default: [''],
   Nettleser: ["https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"],
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
-};
-const allTitles = {
-	default: ['ingen context?'],
-	Nettleser: ["støttede nettlesere"],
-	Sperret: ["Bruk av portal"],
 };
