@@ -121,8 +121,6 @@ app.post('/webhook', (req, res) => {
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
             delete sessions[sessionId];
-            
-           
           }
         }
       );
