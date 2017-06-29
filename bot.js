@@ -82,7 +82,7 @@ const actions = {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    "url": JSON.stringify(wantedLinks2),
+					    "url": JSON.stringify("wantedLinks2"),
 					    "title": "web url"
 				    }, {
 					    "type": "postback",
