@@ -76,13 +76,16 @@ const actions = {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
-				"template_type": "button",
-				"text": "Her er veiledningen",
+				"template_type": "generic",
+				"elements":[
+				{
+				"title": "Her er veiledningen",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
 					    "title": myTitle
 			    }]
+				}]
 		    }
 	    }
     }
