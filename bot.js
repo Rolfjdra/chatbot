@@ -58,8 +58,7 @@ const actions = {
   },
 		  
   merge(sessionId, context, entities, message, cb) {
-    // Resetter link-context
-    delete context.links 
+    // Resetter cat
 	delete context.cat
 	
 	

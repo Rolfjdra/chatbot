@@ -120,7 +120,7 @@ app.post('/webhook', (req, res) => {
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
-            if (context.links) {
+            if (context.cat) {
             delete sessions[sessionId];
             }
            
