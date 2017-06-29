@@ -69,7 +69,7 @@ const actions = {
     if (category) {
       context.cat = category; // lagrer i context
 	  const wantedLinks2 = allLinks[context.cat || 'default']
-	  const myLink = JSON.stringify(wantedLinks2);
+	  const myLink = wantedLinks2.toString();
 	  const messageData = {
 	    "attachment": {
 		    "type": "template",
