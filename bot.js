@@ -77,7 +77,7 @@ const actions = {
 		    "type": "template",
 		    "payload": {
 				"template_type": "button",
-				"text": "Her er veiledningen"
+				"text": "Her er veiledningen",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
