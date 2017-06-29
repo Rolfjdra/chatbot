@@ -82,7 +82,7 @@ const actions = {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    jsonlink,
+					    "url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf",
 					    "title": "web url"
 				    }, {
 					    "type": "postback",
