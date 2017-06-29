@@ -77,8 +77,7 @@ app.post('/webhook', (req, res) => {
   const messaging = FB.getFirstMessagingEntry(req.body);
   if (messaging && messaging.message) {
 
-    // Mottok melding!!
-
+    // Mottok melding!
     // Henter Facebook user ID
     const sender = messaging.sender.id;
 
