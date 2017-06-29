@@ -78,7 +78,6 @@ const actions = {
 			    "elements": [{
 					"title": "DFO",
 				    "subtitle": "Brukerveiledning",
-				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
