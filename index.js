@@ -120,10 +120,8 @@ app.post('/webhook', (req, res) => {
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
-            if (context.cat) {
             delete sessions[sessionId];
-			delete messageData2;
-            }
+            
            
           }
         }
@@ -132,7 +130,6 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-
 function sendGenericMessage(sender){
 	let messageData2 = bot.messageData;
 	    request({
