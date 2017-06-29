@@ -122,6 +122,7 @@ app.post('/webhook', (req, res) => {
             // Eksempel: Prøver med "intent"
             if (context.cat) {
             delete sessions[sessionId];
+			delete messageData2;
             }
            
           }

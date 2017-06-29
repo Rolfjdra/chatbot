@@ -60,7 +60,6 @@ const actions = {
   merge(sessionId, context, entities, message, cb) {
     // Resetter cat
 	delete context.cat
-	delete messageData
 	
     // Henter entity og lagrer i context/
 	
