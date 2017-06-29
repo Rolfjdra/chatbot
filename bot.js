@@ -126,6 +126,6 @@ const allLinks = {
 };
 const allTitles = {
 	default: ['ingen context?'],
-	Nettleser: ["instruks for nettleser"],
-	Sperret: ["Jeg har sperret meg selv"],
+	Nettleser: ["støttede nettlesere"],
+	Sperret: ["Bruk av portal"],
 };
