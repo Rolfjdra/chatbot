@@ -68,8 +68,8 @@ const actions = {
     const category = firstEntityValue(entities, 'intent');
     if (category) {
       context.cat = category; // lagrer i context
-	  const wantedLinks2 = allLinks[context.cat || 'default']
-	  const myLink = wantedLinks2.toString();
+	  const wantedLinks = allLinks[context.cat || 'default']
+	  const myLink = wantedLinks.toString();
 	  const messageData = {
 	    "attachment": {
 		    "type": "template",
@@ -82,10 +82,6 @@ const actions = {
 					    "type": "web_url",
 					    "url": myLink,
 					    "title": "web url"
-				    }, {
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
 				    }]
 			    }]
 		    }
@@ -101,13 +97,6 @@ const actions = {
   error(sessionId, context, error) {
     console.log(error.message);
   },
- 
-  // Links til brukerveiledning
-  	['fetch-links'](sessionId, context, cb) {
-		const wantedLinks = allLinks[context.cat || 'default']
-		context.links = wantedLinks[Math.floor(Math.random() * wantedLinks.length)]
-		cb(context)
-	},
 };
 
 
