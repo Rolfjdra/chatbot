@@ -68,9 +68,9 @@ const actions = {
     const category = firstEntityValue(entities, 'intent');
     if (category) {
       context.cat = category; // lagrer i context
-	  const wantedLinks2 = allLinks[context.cat || 'default']
-	  var myLink = {"url": "wantedLinks2"};
-	  const jsonlink = JSON.stringify(myLink);
+	  var wantedLinks2 = allLinks[context.cat || 'default']
+	 // var myLink = {"url": "wantedLinks2"};
+	 // const jsonlink = JSON.stringify(myLink);
 	  const messageData = {
 	    "attachment": {
 		    "type": "template",
@@ -82,7 +82,7 @@ const actions = {
 				    "image_url": "https://dfo.no/Images/logo_dfo.png",
 				    "buttons": [{
 					    "type": "web_url",
-					    "url": JSON.stringify("wantedLinks2"),
+					    "url": wantedLinks2,
 					    "title": "web url"
 				    }, {
 					    "type": "postback",
