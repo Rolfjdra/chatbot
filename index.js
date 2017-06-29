@@ -96,7 +96,7 @@ app.post('/webhook', (req, res) => {
       // Autoreply
       FB.fbMessage(
         sender,
-        'Beklager, jeg kan kun prosessere tekstmeldinger'
+        'Kult! Jeg kan desverre kun prosessere tekstmeldinger'
       );
     } else if (msg) {
       // Mottok meldingstekst
