@@ -70,16 +70,19 @@ const actions = {
       context.cat = category; // lagrer i context
 	  const wantedLinks = allLinks[context.cat || 'default']
 	  const myLink = wantedLinks.toString();
+	  const wantedTitle = allTitles[context.cat || 'default']
+	  const myTitle = wantedTitle.toString();
 	  const messageData = {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
-				"template_type": "generic",
+				"template_type": "button",
+				"text": "Her er veiledningen"
 			    "elements": [{
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": myLink,
-					    "title": "brukerveiledning"
+					    "title": myTitle
 				    }]
 			    }]
 		    }
@@ -119,4 +122,9 @@ const allLinks = {
   Nettleser: ["https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"],
   Sperret : ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
 
+};
+const allTitles = {
+	default: ['ingen context?']
+	Nettleser: ["instruks for nettleser"];
+	Sperret: ["Jeg har sperret meg selv"]
 };
