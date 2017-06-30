@@ -1,17 +1,17 @@
 'use strict';
 // Henter opp vertifikasjoner -> Facebookside, WIT-api, Heroku-webhook
-const WIT_TOKEN = process.env.WIT_TOKEN || "VEFYEHGUBXTKPGFL6IQSGY5CB2NVTPWT";
+const WIT_TOKEN = process.env.WIT_TOKEN || "WRAXCGEZKGZCMMAHKGDQGKBHQZUB273X"
 if (!WIT_TOKEN) {
   throw new Error("Ingen WIT_TOKEN. Hent: https://wit.ai/")
 }
 
 
-var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || "EAABcpUgvhNoBAEsZCLChENftlNaMmzS9bF69YfKqiGSH7m4ZAZCsmvdGmkfNEymmPuzKmhuHLPFePwwnfWUyZCdIQpttqydZAr1eUYAsrD333rLDWKvlyxipms7CMCLE7ZAvwiFZAzKFofGZBWsZAunBmCmEuDZCjMkZANURmzDGhLZCJ6ZAZBmbZCNo8hrBf93pr9PCfoZD";
+var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || "EAACtPl97H00BAAMiuwNWZAP6km5cFbZBZCTd9z1vsk9ZBVVA1gjPe3exnjh94k9B2ZAo1mMwJ0zqP3q1q67p6bP4jvSW8I2f0ZCXeZC1GKZB0eo4SJSZBLm0moZBHMldGSTUO1TNEg1taMTEYcpDFA3UJjRWhMBFJs37u0PhZBLbPoPvwZDZD";
 if (!FB_PAGE_TOKEN) {
 	throw new Error("Ingen FB_PAGE_TOKEN. Gå til https://developers.facebook.com/docs/pages/access-tokens")
 }
 
-var FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN || 'my_voice_is_my_password_verify_me';
+var FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN || 'my_voice_is_my_password_verify_me'
 
 module.exports = {
   WIT_TOKEN: WIT_TOKEN,

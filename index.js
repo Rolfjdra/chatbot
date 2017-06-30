@@ -1,6 +1,7 @@
 'use strict';
 
 // DFO-chatbot under utvikling
+// NY FACE BRUKER
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
@@ -9,6 +10,7 @@ const request = require('request');
 const bot = require('./bot.js');
 const Config = require('./config.js');
 const FB = require('./facebook.js');
+
 
 // Setter opp bot
 const wit = bot.getWit();
