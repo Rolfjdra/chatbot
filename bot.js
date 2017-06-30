@@ -128,5 +128,5 @@ const allTitles = {
 	Sperret: ["Bruk av portal"],
 	logge: ["logg inn her"],
 	Vedlegg: ["Vedlegg"],
-	Ikkesendt:
+	Ikkesendt: ["Sende reise"],
 };
