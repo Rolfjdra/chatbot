@@ -1,7 +1,7 @@
 {
-  "name": "dfochatbotnpm",
+  "name": "dfoface",
   "version": "1.0.0",
-  "description": "dfochatbot",
+  "description": "dfoface",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,15 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rolfjdra/chatbot.git"
+    "url": "git+https://github.com/Rolfjdra/chatDFO.git"
   },
-  "author": "Rolfjdra",
+  "author": "rolfjdra",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rolfjdra/chatbot/issues"
+    "url": "https://github.com/Rolfjdra/chatDFO/issues"
   },
-  "homepage": "https://github.com/Rolfjdra/chatbot#readme",
-  "dependencies": {
-    "botbuilder-quickreplies": "^1.1.1"
-  }
+  "homepage": "https://github.com/Rolfjdra/chatDFO#readme",
+  "dependencies": {}
 }
