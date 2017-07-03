@@ -87,6 +87,15 @@ app.post('/webhook', (req, res) => {
     const sessionId = findOrCreateSession(sender);
     // Hent meldingsinnhold
     const msg = messaging.message.text;
+	msg.then(function(result) {
+		if (result.confidence < 0.2){
+			delete msg;
+			FB.fbMessage(
+			sender,
+			'low conf'
+			);
+		}	
+	}
     const atts = messaging.message.attachments;
 		
     if (atts) {

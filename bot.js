@@ -87,7 +87,6 @@ const actions = {
 	    }
     }
 	exports.messageData = messageData;
-	exports.conf = conf;
     }
 
     cb(context);
