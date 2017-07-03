@@ -89,7 +89,6 @@ app.post('/webhook', (req, res) => {
     const msg = messaging.message.text;
 	msg.then(function(result) {
 		if (result.confidence < 0.2){
-			delete msg;
 			FB.fbMessage(
 			sender,
 			'low conf'
