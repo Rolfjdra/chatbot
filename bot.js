@@ -79,7 +79,7 @@ const actions = {
 					"type": "web_url",
 					"url": myLink,
 					"title": myTitle,
-					"webview_height_ratio": "compact"
+					"webview_height_ratio": "tall"
 			}]
 		    }
 	    }
