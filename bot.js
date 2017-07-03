@@ -119,6 +119,7 @@ const allLinks = {
   Vedlegg: ["https://dfo.no/Documents/LA/brukerdokumentasjon/Hjelp%20til%20Opprett%20reiseregning.pdf#page=11"],
   Ikkesendt: ["https://dfo.no/Documents/LA/brukerdokumentasjon/Hjelp%20til%20Opprett%20reiseregning.pdf#page=20"],
   retur: ["http://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf#page=3"],
+  Reisereg: ["http://www.regjeringen.no/no/tema/arbeidsliv/Statlig-arbeidsgiverpolitikk/statens_reiseregulativ/id965/"],
 };
 const allTitles = {
 	default: ['ingen context?'],
@@ -128,4 +129,5 @@ const allTitles = {
 	Vedlegg: ["Vedlegg"],
 	Ikkesendt: ["Sende reise"],
 	retur: ["Korrigering i innkurv"],
+	Reisereg: ["Statens reiseregulativ"],
 };
