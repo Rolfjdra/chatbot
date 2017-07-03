@@ -86,14 +86,7 @@ app.post('/webhook', (req, res) => {
     // Finner samtalehistorikk
     const sessionId = findOrCreateSession(sender);
     // Hent meldingsinnhold
-    const msg = messaging.message.text;
-	const conf = messaging.entities.intent[0].confidence;
-	if (conf < 0.2) {
-		FB.fbMessage(
-		sender,
-		'low conf'
-		);
-	}	
+    const msg = messaging.message.text;	
     const atts = messaging.message.attachments;
     if (atts) {
       // Vi mottok et vedlegg,bilde,gif etc...
