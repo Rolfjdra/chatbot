@@ -64,7 +64,6 @@ const actions = {
     // Henter entity og lagrer i context/
     const category = firstEntityValue(entities, 'intent');
     if (category) {
-	  const conf = entities.intent[0].confidence;
       context.cat = category; // lagrer i context
 	  const wantedLinks = allLinks[context.cat || 'default']
 	  const myLink = wantedLinks.toString();
