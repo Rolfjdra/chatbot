@@ -103,6 +103,13 @@ app.post('/webhook', (req, res) => {
       // Mottok meldingstekst
       // Sender melding til wit.ai
       // Kjør actions
+	  const conf = body.entities.intent[0].confidence;
+	  if (conf < 0.2) {
+		  FB.fbMessage(
+			sender,
+			'LOW CONF'
+      );
+	  } else {
       wit.runActions(
         sessionId, // aktiv session
         msg, // the user's message 
@@ -128,7 +135,7 @@ app.post('/webhook', (req, res) => {
           }
         }
       );
-    }
+    }}
   }
   res.sendStatus(200);
 });
