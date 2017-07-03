@@ -94,7 +94,7 @@ app.post('/webhook', (req, res) => {
 			'low conf'
 			);
 		}	
-	}
+	})
     const atts = messaging.message.attachments;
 		
     if (atts) {
