@@ -74,12 +74,11 @@ const actions = {
 		    "type": "template",
 		    "payload": {
 				"template_type": "button",
-				"text": "Her er brukerveiledningen:",
+				"text": "",
 				"buttons": [{
 					"type": "web_url",
 					"url": myLink,
-					"title": myTitle,
-					"webview_height_ratio": "tall"
+					"title": myTitle
 			}]
 		    }
 	    }
@@ -123,9 +122,9 @@ const allLinks = {
 };
 const allTitles = {
 	default: ['ingen context?'],
-	Nettleser: ["støttede nettlesere"],
+	Nettleser: ["Støttede nettlesere"],
 	Sperret: ["Bruk av portal"],
-	logge: ["logg inn her"],
+	logge: ["Logg inn her"],
 	Vedlegg: ["Vedlegg"],
 	Ikkesendt: ["Sende reise"],
 	retur: ["Korrigering i innkurv"],
