@@ -78,7 +78,8 @@ const actions = {
 				"buttons": [{
 					"type": "web_url",
 					"url": myLink,
-					"title": myTitle
+					"title": myTitle,
+					"webview_height_ratio": "compact"
 			}]
 		    }
 	    }
