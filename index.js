@@ -82,7 +82,6 @@ app.post('/webhook', (req, res) => {
     // Mottok melding!
     // Henter Facebook user ID
     const sender = messaging.sender.id;
-	const conf = messaging.entities.intent[0].confidence;
     // Hent session, eller lag ny
     // Finner samtalehistorikk
     const sessionId = findOrCreateSession(sender);
@@ -90,12 +89,6 @@ app.post('/webhook', (req, res) => {
     // Hent meldingsinnhold
     const msg = messaging.message.text;
     const atts = messaging.message.attachments;
-	if (conf < 0.2) {
-      FB.fbMessage(
-        sender,
-        'Kult! Jeg kan desverre kun prosessere tekstmeldinger'
-      );
-	}
 		
     else if (atts) {
       // Vi mottok et vedlegg,bilde,gif etc...
