@@ -99,14 +99,14 @@ app.post('/webhook', (req, res) => {
         'Kult! Jeg kan desverre kun prosessere tekstmeldinger'
       );
 	}
-	  else if (conf < 0.2) {
+	  else if (confidence < 0.2) {
       // Autoreply
       FB.fbMessage(
         sender,
         'low conf'
       );
 	}
-      else if (msg) {
+      else if (msg && confidence > 0.2) {
       // Mottok meldingstekst
       // Sender melding til wit.ai
       // Kjør actions
