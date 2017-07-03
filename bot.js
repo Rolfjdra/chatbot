@@ -73,17 +73,13 @@ const actions = {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
-				"template_type": "generic",
-				"elements":[
-				{
-				"title": "Brukerveiledning:",
-				    "buttons": [{
-					    "type": "web_url",
-					    "url": myLink,
-					    "title": myTitle,
-						"webview_height_ratio": "comapact"
-			    }]
-				}]
+				"template_type": "button",
+				"text": "Her er brukerveiledningen:"
+				"buttons": [{
+					"type": "web_url",
+					"url": myLink,
+					"title": myTitle
+			}]
 		    }
 	    }
     }
