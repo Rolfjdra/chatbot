@@ -85,7 +85,7 @@ app.post('/webhook', (req, res) => {
     // Hent session, eller lag ny
     // Finner samtalehistorikk
     const sessionId = findOrCreateSession(sender);
-
+	const confidence = bot.conf;
     // Hent meldingsinnhold
     const msg = messaging.message.text;
     const atts = messaging.message.attachments;
@@ -98,7 +98,15 @@ app.post('/webhook', (req, res) => {
         sender,
         'Kult! Jeg kan desverre kun prosessere tekstmeldinger'
       );
-    } else if (msg) {
+	}
+	  else if (conf < 0.2) {
+      // Autoreply
+      FB.fbMessage(
+        sender,
+        'low conf'
+      );
+	}
+      else if (msg) {
       // Mottok meldingstekst
       // Sender melding til wit.ai
       // Kjør actions
