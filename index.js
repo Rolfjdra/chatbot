@@ -90,7 +90,7 @@ app.post('/webhook', (req, res) => {
     const msg = messaging.message.text;
     const atts = messaging.message.attachments;
 		
-    else if (atts) {
+    if (atts) {
       // Vi mottok et vedlegg,bilde,gif etc...
 
       // Autoreply
