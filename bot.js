@@ -100,12 +100,12 @@ const actions = {
 			},
 			{
 				"content_type": "text",
-				"title": "Jeg har blitt sperret",
+				"title": "Problem med side",
 				"payload": "b"
 			},
 			{
 				"content_type": "text",
-				"title": "Side/lenke fungerer ikke",
+				"title": "Sperret",
 				"payload": "c"
 			},
 			]
