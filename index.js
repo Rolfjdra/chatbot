@@ -129,6 +129,7 @@ app.post('/webhook', (req, res) => {
 				delete sessions[sessionId];
 				delete window.quickData2;
           }
+		  }
         }
       );
     }
