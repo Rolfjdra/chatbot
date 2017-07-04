@@ -135,11 +135,11 @@ const allTitles = {
 };
 const allResp = {
 	default: ["oops"],
-	Nettleser: ["Støttede nettlesere"],
-	Sperret: ["Bruk av portal"],
-	logge: ["Logg inn her"],
-	Vedlegg: ["Vedlegg"],
-	Ikkesendt: ["Sende reise"],
-	retur: ["Korrigering i innkurv"],
-	Reisereg: ["Her finner du info om reiseregulativet"],
+	Nettleser: ["Problemet kan komme av nettleseren du bruker. DFØ sin portal er optimalisert for Internet explorer 11."],
+	Sperret: ["Det kan være du har sperret deg selv. Sperren forsvinner av seg selv etter 30 minutter."],
+	logge: ["Kan du forklare problemet ditt litt nærmere? Forsikre deg om at du logger inn riktig sted:"],
+	Vedlegg: ["For å laste opp vedlegg må du klikke på vedlegg-knappen på trinn 1 - Generelle data."],
+	Ikkesendt: ["Du bør undersøke om reisen/honoraret er sendt til godkjenning."],
+	retur: ["Dersom du har fått et skjema i retur må du korrigere dette i innkurven i selvbetjeningsportalen."],
+	Reisereg: ["Her finner du info om reiseregulativet:"],
 };
