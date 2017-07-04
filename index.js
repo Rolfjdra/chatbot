@@ -87,6 +87,7 @@ app.post('/webhook', (req, res) => {
     const sessionId = findOrCreateSession(sender);
     // Hent meldingsinnhold
     const msg = messaging.message.text;	
+	exports.msg = msg;
     const atts = messaging.message.attachments;
     if (atts) {
       // Vi mottok et vedlegg,bilde,gif etc...
@@ -105,7 +106,6 @@ app.post('/webhook', (req, res) => {
         sessionId, // aktiv session
         msg, // the user's message 
         sessions[sessionId].context, // session state
-		exports.msg = msg;
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
