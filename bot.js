@@ -91,7 +91,7 @@ const actions = {
 	if (quickreply) {
 		context.quick = quickreply;
 		const quickData = {
-			"text": "Pick one:",
+			"text": "Velg et alternativ, eller forklar problemet ditt nærmere",
 			"quick_replies": [
 			{
 				"content_type": "text",
@@ -104,8 +104,8 @@ const actions = {
 				"payload": "b"
 			},
 			{
-				"content_type": "Side/lenke fungerer ikke",
-				"title": "c",
+				"content_type": "text",
+				"title": "Side/lenke fungerer ikke",
 				"payload": "c"
 			},
 			]
@@ -162,7 +162,7 @@ const allResp = {
 	default: ["oops"],
 	Nettleser: ["Problemet kan komme av nettleseren du bruker. DFØ sin portal er optimalisert for Internet explorer 11."],
 	Sperret: ["Det kan være du har sperret deg selv. Sperren forsvinner av seg selv etter 30 minutter."],
-	logge: ["Kan du forklare problemet ditt litt nærmere? Forsikre deg om at du logger inn riktig sted:"],
+	logge: ["Forklar problemet ditt litt nærmere. Pass på at du logger deg inn riktig sted:"],
 	Vedlegg: ["For å laste opp vedlegg må du klikke på vedlegg-knappen på trinn 1 - Generelle data."],
 	Ikkesendt: ["Du bør undersøke om reisen/honoraret er sendt til godkjenning."],
 	retur: ["Dersom du har fått et skjema i retur må du korrigere dette i innkurven i selvbetjeningsportalen."],
