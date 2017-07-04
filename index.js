@@ -132,7 +132,7 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 function sendGenericMessage(sender){
-	    messageData2 = bot.messageData;
+	let messageData2 = bot.messageData;
 	    request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
