@@ -95,22 +95,22 @@ const actions = {
 			{
 				"content_type": "text",
 				"title": "a",
-				"payload": "payloadA"
+				"payload": "a"
 			},
 			{
 				"content_type": "text",
 				"title": "b",
-				"payload": "payloadB"
+				"payload": "b"
 			},
 			{
 				"content_type": "text",
 				"title": "c",
-				"payload": "payloadC"
+				"payload": "c"
 			},
 			{
 				"content_type": "text",
 				"title": "d",
-				"payload": "payloadD"
+				"payload": "d"
 			}
 			]
 		}
