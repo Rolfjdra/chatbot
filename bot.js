@@ -89,6 +89,7 @@ const actions = {
     }
 	const quickreply = firstEntityValue(entities,'quick');
 	if (quickreply) {
+		context.quick = quickreply;
 		const quickData = {
 			"text": "Pick one:",
 			"quick_replies": [
