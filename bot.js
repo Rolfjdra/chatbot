@@ -68,12 +68,15 @@ const actions = {
 	  const myLink = wantedLinks.toString();
 	  const wantedTitle = allTitles[context.cat || 'default']
 	  const myTitle = wantedTitle.toString();
+	  const msgg = index.msg;
+	  const myMsg = msg.toString();
+	  
 	  const messageData = {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
 				"template_type": "button",
-				"text": "Se veiledning:",
+				"text": myMsg,
 				"buttons": [{
 					"type": "web_url",
 					"url": myLink,
