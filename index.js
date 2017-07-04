@@ -122,6 +122,8 @@ app.post('/webhook', (req, res) => {
 			if(context.cat){
 				sendGenericMessage(sender)
 				delete sessions[sessionId];
+				delete messageData2;
+				delete bot.messageData;
 			}
           }
         }
