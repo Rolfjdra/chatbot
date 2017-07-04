@@ -96,7 +96,7 @@ const actions = {
 			{
 				"content_type": "text",
 				"title": "a",
-				"payload": "a"
+				"payload": "chrome"
 			},
 			{
 				"content_type": "text",
