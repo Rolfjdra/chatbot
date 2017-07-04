@@ -95,8 +95,8 @@ const actions = {
 			"quick_replies": [
 			{
 				"content_type": "text",
-				"title": "a",
-				"payload": "chrome"
+				"title": "chrome",
+				"payload": "a"
 			},
 			{
 				"content_type": "text",
