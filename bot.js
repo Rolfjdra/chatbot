@@ -95,24 +95,19 @@ const actions = {
 			"quick_replies": [
 			{
 				"content_type": "text",
-				"title": "chrome",
+				"title": "Problem med minID",
 				"payload": "a"
 			},
 			{
 				"content_type": "text",
-				"title": "b",
+				"title": "Jeg har blitt sperret",
 				"payload": "b"
 			},
 			{
-				"content_type": "text",
+				"content_type": "Side/lenke fungerer ikke",
 				"title": "c",
 				"payload": "c"
 			},
-			{
-				"content_type": "text",
-				"title": "d",
-				"payload": "d"
-			}
 			]
 		}
 		exports.quickData = quickData;
