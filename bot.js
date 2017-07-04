@@ -5,6 +5,7 @@ const Wit = require('node-wit').Wit;
 const FB = require('./facebook.js');
 const Config = require('./config.js');
 const request = require('request');
+const index = require('./index.js');
 
 const firstEntityValue = (entities, entity) => {
   const val = entities && entities[entity] &&
@@ -68,7 +69,7 @@ const actions = {
 	  const myLink = wantedLinks.toString();
 	  const wantedTitle = allTitles[context.cat || 'default']
 	  const myTitle = wantedTitle.toString();
-	  const msgg = index.msg;
+	  let msgg = index.msg;
 	  const myMsg = msgg.toString();
 	  
 	  const messageData = {
