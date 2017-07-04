@@ -70,7 +70,6 @@ const actions = {
 	  const myTitle = wantedTitle.toString();
 	  const wantedResp = allResp[context.cat || 'default']
 	  const myResp = wantedResp.toString();
-	  const myMsg = msgg.toString();
 	  
 	  const messageData = {
 	    "attachment": {

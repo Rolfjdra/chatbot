@@ -87,7 +87,6 @@ app.post('/webhook', (req, res) => {
     const sessionId = findOrCreateSession(sender);
     // Hent meldingsinnhold
     const msg = messaging.message.text;	
-	exports.msg = msg;
     const atts = messaging.message.attachments;
     if (atts) {
       // Vi mottok et vedlegg,bilde,gif etc...
