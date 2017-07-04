@@ -69,7 +69,7 @@ const actions = {
 	  const wantedTitle = allTitles[context.cat || 'default']
 	  const myTitle = wantedTitle.toString();
 	  const msgg = index.msg;
-	  const myMsg = msg.toString();
+	  const myMsg = msgg.toString();
 	  
 	  const messageData = {
 	    "attachment": {
