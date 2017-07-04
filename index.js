@@ -164,7 +164,7 @@ function sendGenericMessage2(sender){
 	    method: 'POST',
 	    json: {
 		    recipient: {id:sender},
-		    message: messageData2,
+		    message: quickData2,
 	    }
     }, function(error, response, body) {
 	    if (error) {
