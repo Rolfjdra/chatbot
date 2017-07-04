@@ -122,6 +122,7 @@ app.post('/webhook', (req, res) => {
 			if(context.cat){
 				sendGenericMessage(sender)
 				delete sessions[sessionId];
+				delete messageData2;
 			}
           }
         }
@@ -131,7 +132,7 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 function sendGenericMessage(sender){
-	let messageData2 = bot.messageData;
+	    messageData2 = bot.messageData;
 	    request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
