@@ -5,7 +5,6 @@ const Wit = require('node-wit').Wit;
 const FB = require('./facebook.js');
 const Config = require('./config.js');
 const request = require('request');
-const index = require('./index.js');
 
 const firstEntityValue = (entities, entity) => {
   const val = entities && entities[entity] &&
@@ -69,7 +68,8 @@ const actions = {
 	  const myLink = wantedLinks.toString();
 	  const wantedTitle = allTitles[context.cat || 'default']
 	  const myTitle = wantedTitle.toString();
-	  let msgg = index.msg;
+	  const wantedResp = allResp[context.cat || 'default']
+	  const myResp = wantedResp.toString();
 	  const myMsg = msgg.toString();
 	  
 	  const messageData = {
@@ -77,7 +77,7 @@ const actions = {
 		    "type": "template",
 		    "payload": {
 				"template_type": "button",
-				"text": myMsg,
+				"text": myResp,
 				"buttons": [{
 					"type": "web_url",
 					"url": myLink,
@@ -133,4 +133,14 @@ const allTitles = {
 	Ikkesendt: ["Sende reise"],
 	retur: ["Korrigering i innkurv"],
 	Reisereg: ["Statens reiseregulativ"],
+};
+const allResp = {
+	default: ["oops"],
+	Nettleser: ["Støttede nettlesere"],
+	Sperret: ["Bruk av portal"],
+	logge: ["Logg inn her"],
+	Vedlegg: ["Vedlegg"],
+	Ikkesendt: ["Sende reise"],
+	retur: ["Korrigering i innkurv"],
+	Reisereg: ["Her finner du info om reiseregulativet"],
 };
