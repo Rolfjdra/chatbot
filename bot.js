@@ -81,13 +81,41 @@ const actions = {
 					"type": "web_url",
 					"url": myLink,
 					"title": myTitle,
-					"webview_height_ratio": "full"
 			}]
 		    }
 	    }
     }
 	exports.messageData = messageData;
     }
+	const quickreply = firstEntityValue(entities,'quick');
+	if (quickreply) {
+		const quickData = {
+			"text": "Pick one:",
+			"quick_replies": [
+			{
+				"content_type": "text",
+				"title": "a",
+				"payload": "payloadA"
+			},
+			{
+				"content_type": "text",
+				"title": "b",
+				"payload": "payloadB"
+			},
+			{
+				"content_type": "text",
+				"title": "c",
+				"payload": "payloadC"
+			},
+			{
+				"content_type": "text",
+				"title": "d",
+				"payload": "payloadD"
+			}
+			]
+		}
+		exports.quickData = quickData;
+	}
 
     cb(context);
   },
@@ -129,9 +157,9 @@ const allTitles = {
 	Nettleser: ["Støttede nettlesere"],
 	Sperret: ["Bruk av portal"],
 	logge: ["Logg inn her"],
-	Vedlegg: ["Vedlegg"],
+	Vedlegg: ["Legge ved Vedlegg"],
 	Ikkesendt: ["Sende reise"],
-	retur: ["Korrigering i innkurv"],
+	retur: ["Korrigering innkurv"],
 	Reisereg: ["Statens reiseregulativ"],
 };
 const allResp = {
