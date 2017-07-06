@@ -124,6 +124,7 @@ app.post('/webhook', (req, res) => {
 				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
 				delete window.messageData;
+				messageData = undefined;
 			}
 		  }
         }
