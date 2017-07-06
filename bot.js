@@ -387,7 +387,7 @@ const actions = {
     }
 	
 // Loggikk for diverse lenker
-	const category = firstEntityValue(entities, 'intent');
+	const category = firstEntityValue(entities, 'div');
     if (category) {
       context.cat = category; // lagrer i context
 	  const wantedLinks = allLinks[context.cat || 'default']
