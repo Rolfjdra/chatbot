@@ -119,16 +119,12 @@ app.post('/webhook', (req, res) => {
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
-			if(context.cat){
-				sendGenericMessage(sender)
+			let messageData = bot.messageData;
+			if(messageData){
+				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
-				delete window.messageData2;
+				delete window.messageData;
 			}
-			if (context.quick) {
-				sendGenericMessage2(sender)
-				delete sessions[sessionId];
-				delete window.quickData2;
-          }
 		  }
         }
       );
@@ -136,35 +132,14 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-function sendGenericMessage(sender){
-	let messageData2 = bot.messageData;
+function sendGenericMessage(sender,messageData){
 	    request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
 	    method: 'POST',
 	    json: {
 		    recipient: {id:sender},
-		    message: messageData2,
-	    }
-    }, function(error, response, body) {
-	    if (error) {
-		    console.log('Error sending messages: ', error)
-	    } else if (response.body.error) {
-		    console.log('Error: ', response.body.error)
-	    }
-    })
-
-}
-
-function sendGenericMessage2(sender){
-	let quickData2 = bot.quickData;
-	    request({
-	    url: 'https://graph.facebook.com/v2.6/me/messages',
-	    qs: {access_token:token},
-	    method: 'POST',
-	    json: {
-		    recipient: {id:sender},
-		    message: quickData2,
+		    message: messageData,
 	    }
     }, function(error, response, body) {
 	    if (error) {
