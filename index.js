@@ -119,12 +119,56 @@ app.post('/webhook', (req, res) => {
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
-			let messageData = bot.messageData;
-			if(messageData){
+			
+			if(context.quicklog){
+				let messageData = bot.quicklogmsg;
 				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
 				messageData = undefined;
 			}
+			else if (context.quickreis) {
+				let messageData = bot.quickreismsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.quickov) {
+				let messageData = bot.quickovmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.dagreis) {
+				let messageData = bot.dagreismsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.ovgen) {
+				let messageData = bot.ovgenmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.regut) {
+				let messageData = bot.regutmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.kont) {
+				let messageData = bot.kontmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.tidl) {
+				let messageData = bot.tidlmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			
 		  }
         }
       );

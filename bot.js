@@ -94,7 +94,7 @@ const actions = {
 			},
 			]
 		}
-		exports.messageData = quicklogmsg;
+		exports.quicklogmsg = quicklogmsg;
 	}
 	
 	// Logikk for quickreply -> reiseregning
@@ -132,7 +132,7 @@ const actions = {
 			},
 			]
 		}
-		exports.messageData = quickreismsg;
+		exports.quickreismsg = quickreismsg;
 	}
 	
 	// Logikk for quickreply -> Øvrige reiser1!
@@ -159,7 +159,7 @@ const actions = {
 			},
 			]
 		}
-		exports.messageData = quickovmsg;
+		exports.quickovmsg = quickovmsg;
 	}
 
 
@@ -220,7 +220,7 @@ const actions = {
 		  }
 		}
     }
-	exports.messageData = dagreismsg;
+	exports.dagreismsg = dagreismsg;
     }
 	
 	//Logikk for Øvrige reiser steg1
@@ -278,7 +278,7 @@ const actions = {
 		  }
 		}
     }
-	exports.messageData = ovgenmsg;
+	exports.ovgenmsg = ovgenmsg;
     }
 	
 	// Logikk for øvrige reiser - steg2
@@ -304,7 +304,7 @@ const actions = {
 		    }
 	    }
     }
-	exports.messageData = regutmsg;
+	exports.regutmsg = regutmsg;
 	}
 	
 	// Logikk for øvrige reiser steg3
@@ -325,7 +325,7 @@ const actions = {
 		    }
 	    }
     }
-	exports.messageData = kontmsg;
+	exports.kontmsg = kontmsg;
 	}
 	
 	const tidl = firstEntityValue(entities, 'tidl');
@@ -383,7 +383,7 @@ const actions = {
 		  }
 		}
     }
-	exports.messageData = tidlmsg;
+	exports.tidlmsg = tidlmsg;
     }
 
 
