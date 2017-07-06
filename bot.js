@@ -385,6 +385,34 @@ const actions = {
     }
 	exports.tidlmsg = tidlmsg;
     }
+	
+// Loggikk for diverse lenker
+	const category = firstEntityValue(entities, 'intent');
+    if (category) {
+      context.cat = category; // lagrer i context
+	  const wantedLinks = allLinks[context.cat || 'default']
+	  const myLink = wantedLinks.toString();
+	  const wantedTitle = allTitles[context.cat || 'default']
+	  const myTitle = wantedTitle.toString();
+	  const wantedResp = allResp[context.cat || 'default']
+	  const myResp = wantedResp.toString();
+	  
+	  const divData = {
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "button",
+				"text": myResp,
+				"buttons": [{
+					"type": "web_url",
+					"url": myLink,
+					"title": myTitle,
+			}]
+		    }
+	    }
+    }
+	exports.divData = divData;
+    }
 
 
     cb(context);
@@ -409,3 +437,35 @@ if (require.main === module) {
   const client = getWit();
   client.interactive();
 }
+
+
+const allLinks = {
+  default: ['https://www.vg.no'],
+  Nettleser: ["https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/"],
+  Sperret: ['https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf'],
+  logge: ["https://idporten.difi.no/opensso/UI/Login?realm=/norge.no&spEntityID=registrering.dfo.no&goto=http%3A%2F%2Fidporten.difi.no%2Fopensso%2FSSORedirect%2FmetaAlias%2Fnorge.no%2Fidp3%3FReqID%3DS9469b541-3617-494a-aba4-887f7ef11649%26index%3Dnull%26acsURL%3D%26spEntityID%3Dregistrering.dfo.no%26binding%3D"],
+  Vedlegg: ["https://dfo.no/Documents/LA/brukerdokumentasjon/Hjelp%20til%20Opprett%20reiseregning.pdf#page=11"],
+  Ikkesendt: ["https://dfo.no/Documents/LA/brukerdokumentasjon/Hjelp%20til%20Opprett%20reiseregning.pdf#page=20"],
+  retur: ["http://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf#page=3"],
+  Reisereg: ["http://www.regjeringen.no/no/tema/arbeidsliv/Statlig-arbeidsgiverpolitikk/statens_reiseregulativ/id965/"],
+};
+const allTitles = {
+	default: ['ingen context?'],
+	Nettleser: ["Støttede nettlesere"],
+	Sperret: ["Bruk av portal"],
+	logge: ["Logg inn her"],
+	Vedlegg: ["Legge ved Vedlegg"],
+	Ikkesendt: ["Sende reise"],
+	retur: ["Korrigering innkurv"],
+	Reisereg: ["Statens reiseregulativ"],
+};
+const allResp = {
+	default: ["oops"],
+	Nettleser: ["Problemet kan komme av nettleseren du bruker. DFØ sin portal er optimalisert for Internet explorer 11."],
+	Sperret: ["Det kan være du har sperret deg selv. Sperren forsvinner av seg selv etter 30 minutter."],
+	logge: ["Forklar problemet ditt litt nærmere. Pass på at du logger deg inn riktig sted:"],
+	Vedlegg: ["For å laste opp vedlegg må du klikke på vedlegg-knappen på trinn 1 - Generelle data."],
+	Ikkesendt: ["Du bør undersøke om reisen/honoraret er sendt til godkjenning."],
+	retur: ["Dersom du har fått et skjema i retur må du korrigere dette i innkurven i selvbetjeningsportalen."],
+	Reisereg: ["Her finner du info om reiseregulativet:"],
+};

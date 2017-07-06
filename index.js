@@ -168,6 +168,12 @@ app.post('/webhook', (req, res) => {
 				delete sessions[sessionId];
 				messageData = undefined;
 			}
+			else if (context.cat) {
+				let messageData = bot.divData;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
 			
 		  }
         }
