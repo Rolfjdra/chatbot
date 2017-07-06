@@ -100,6 +100,7 @@ const actions = {
 	// Logikk for quickreply -> reiseregning
 	const quickreis = firstEntityValue(entities,'quickreis');
 	if (quickreis) {
+		console.log('KOMMET MEG INN I QUICKREIS');
 		context.quickreis = quickreis; // Quick replies for registrering av reiseregning
 		const quickreismsg = {
 			"text": "Hvilken del av reiseregninger trenger du hjelp med?",
@@ -329,6 +330,7 @@ const actions = {
 	
 	const tidl = firstEntityValue(entities, 'tidl');
     if (tidl) {
+	  console.log('ER I TIDL??????????????');
       context.tidl = tidl; // lagrer i context
 	  const tidlmsg = {
 	    "attachment": {
