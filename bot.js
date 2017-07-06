@@ -94,7 +94,7 @@ const actions = {
 			},
 			]
 		}
-		exports.quickData = quicklogmsg;
+		exports.messageData = quicklogmsg;
 	}
 	
 	// Logikk for quickreply -> reiseregning
@@ -131,7 +131,7 @@ const actions = {
 			},
 			]
 		}
-		exports.quickData = quickreismsg;
+		exports.messageData = quickreismsg;
 	}
 	
 	// Logikk for quickreply -> Øvrige reiser1!
@@ -158,7 +158,7 @@ const actions = {
 			},
 			]
 		}
-		exports.quickData = quickovmsg;
+		exports.messageData = quickovmsg;
 	}
 
 
