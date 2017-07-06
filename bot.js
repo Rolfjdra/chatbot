@@ -289,16 +289,16 @@ const actions = {
 		    "type": "template",
 		    "payload": {
 				"template_type": "button",
-				"text": myResp,
+				"text": "Hjelp med registrering av utgiftsbilag:",
 				"buttons": [{
 					"type": "web_url",
 					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=10",
-					"title": "Reg utgiftsbilag",
+					"title": "Uten merverdiavgift",
 			},
 			{
 					"type": "web_url",
 					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=12",
-					"title": "Reg utgiftsbilag m/MVA",
+					"title": "Med merverdiavgift",
 			}]
 		    }
 	    }
@@ -315,16 +315,11 @@ const actions = {
 		    "type": "template",
 		    "payload": {
 				"template_type": "button",
-				"text": myResp,
+				"text": "Hjelp med steg 3-Kontroller og send",
 				"buttons": [{
 					"type": "web_url",
-					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=10",
-					"title": "Reg utgiftsbilag",
-			},
-			{
-					"type": "web_url",
-					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=12",
-					"title": "Reg utgiftsbilag m/MVA",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=13",
+					"title": "Kontroller og send",
 			}]
 		    }
 	    }
@@ -386,7 +381,7 @@ const actions = {
 		  }
 		}
     }
-	exports.messageData = ovgenmsg;
+	exports.messageData = tidlmsg;
     }
 
 
