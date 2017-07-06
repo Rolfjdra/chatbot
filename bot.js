@@ -73,17 +73,53 @@ const actions = {
 	  
 	  const messageData = {
 	    "attachment": {
-		    "type": "template",
-		    "payload": {
-				"template_type": "button",
-				"text": myResp,
-				"buttons": [{
+		  "type": "template",
+		  "payload": {
+			"template_type": "generic",
+			"elements": [
+			  {
+				"title": "Velg brukerveilednig:",
+				"buttons": [
+				  {
 					"type": "web_url",
-					"url": myLink,
-					"title": myTitle,
-			}]
-		    }
-	    }
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf",
+					"title": "Registrere dagsreise"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=2",
+					"title": "Vedlegg"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=3",
+					"title": "Fradrag måltider"
+				  }
+				]
+			  },
+			  {
+				"title": "Her også: ??",
+				"buttons": [
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=3",
+					"title": "Registrere kilometer"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=4",
+					"title": "Registrere utgiftsbilag"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=4",
+					"title": "Sende til godkjenning"
+				  }
+				]
+			  }
+			]
+		  }
+		}
     }
 	exports.messageData = messageData;
     }
