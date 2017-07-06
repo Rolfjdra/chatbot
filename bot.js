@@ -78,12 +78,12 @@ const actions = {
 			"template_type": "generic",
 			"elements": [
 			  {
-				"title": "Velg brukerveilednig:",
+				"title": "Hjelp med:",
 				"buttons": [
 				  {
 					"type": "web_url",
-					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf",
-					"title": "Registrere dagsreise"
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=4",
+					"title": "Sende til godkjenning"
 				  },
 				  {
 					"type": "web_url",
@@ -98,23 +98,24 @@ const actions = {
 				]
 			  },
 			  {
-				"title": "Her også: ??",
+				"title": "Registreringer av:",
 				"buttons": [
 				  {
 					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf",
+					"title": "dagreise innenlands"
+				  },
+				  {
+					"type": "web_url",
 					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=3",
-					"title": "Registrere kilometer"
+					"title": "kilometer"
 				  },
 				  {
 					"type": "web_url",
 					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=4",
-					"title": "Registrere utgiftsbilag"
-				  },
-				  {
-					"type": "web_url",
-					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_dagsreise_innenlands.pdf#page=4",
-					"title": "Sende til godkjenning"
+					"title": "utgiftsbilag"
 				  }
+
 				]
 			  }
 			]
