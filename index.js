@@ -108,12 +108,12 @@ app.post('/webhook', (req, res) => {
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
+		  }
 		  else if (msg == "hei" || msg == "hallo" || msg == "heisann" || msg == "hjelp") {
 			  let messageData = bot.startmsg;
 			  sendGenericMessage(sender,messageData)
 			  delete sessions[sessionId];
-			  messageData = undefined;
-		  }			  
+			  messageData = undefined;		  
           } else {
             // bot er ferdig
             // Venter på mer input
