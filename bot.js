@@ -67,6 +67,11 @@ const actions = {
 	delete context.ovgen;
 	delete context.kont;
 	delete context.tidl;
+	delete context.cat;
+	delete context.bet;
+	delete context.tidopp;
+	delete context.lonn;
+	delete context.pers;
 	
 // SEKSJON FOR QUICKREPLY-LOGIKK
 
@@ -97,6 +102,39 @@ const actions = {
 		exports.quicklogmsg = quicklogmsg;
 	}
 	
+	// Startbeskjed
+	const startmsg = {
+			"text": "Hei! Jeg kan hjelpe deg med portalen eller innloggingsproblemer. Velg et alternativ eller spør meg :)",
+			"quick_replies": [
+			{
+				"content_type": "text",
+				"title": "Reiseregninger",
+				"payload": "d"
+			},
+			{
+				"content_type": "text",
+				"title": "Lønn og honorarer",
+				"payload": "e"
+			},
+			{
+				"content_type": "text",
+				"title": "Personlig profil",
+				"payload": "f"
+			},
+			{
+				"content_type": "text",
+				"title": "Innlogging",
+				"payload": "g"
+			},
+			{
+				"content_type": "text",
+				"title": "Teknisk problem",
+				"payload": "h"
+			},
+			]
+		}
+		exports.startmsg = startmsg;
+	
 	// Logikk for quickreply -> reiseregning
 	const quickreis = firstEntityValue(entities,'quickreis');
 	if (quickreis) {
@@ -117,7 +155,7 @@ const actions = {
 			},
 			{
 				"content_type": "text",
-				"title": "Oversikt tidligere reiser",
+				"title": "Oversikt tidl reiser",
 				"payload": "f"
 			},
 			{
@@ -160,6 +198,33 @@ const actions = {
 			]
 		}
 		exports.quickovmsg = quickovmsg;
+	}
+	
+	//Logikk for quickreply -> Lønn/honorarer
+	const quicklonn = firstEntityValue(entities,'quicklonn');
+	if (quicklonn) {
+		context.quicklonn = quicklonn;
+		const quicklonn = {
+			"text": "Hvilken del av Lønn og honoraer trenger du hjelp med?",
+			"quick_replies": [
+			{
+				"content_type": "text",
+				"title": "Betaling for oppdrag",
+				"payload": "ca"
+			},
+			{
+				"content_type": "text",
+				"title": "Oversikt tidligere oppdrag",
+				"payload": "cb"
+			},
+			{
+				"content_type": "text",
+				"title": "Lønnsslipp",
+				"payload": "cc"
+			},
+			]
+		}
+		exports.quicklonn = quicklonn;
 	}
 
 
@@ -330,7 +395,6 @@ const actions = {
 	
 	const tidl = firstEntityValue(entities, 'tidl');
     if (tidl) {
-	  console.log('ER I TIDL??????????????');
       context.tidl = tidl; // lagrer i context
 	  const tidlmsg = {
 	    "attachment": {
@@ -385,6 +449,177 @@ const actions = {
     }
 	exports.tidlmsg = tidlmsg;
     }
+	
+	const bet = firstEntityValue(entities, 'bet');
+    if (bet) {
+      context.bet = bet; // lagrer i context
+	  const betmsg = {
+	    "attachment": {
+		  "type": "template",
+		  "payload": {
+			"template_type": "generic",
+			"elements": [
+			  {
+				"title": "Hjelp med:",
+				"buttons": [
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_betaling_for_oppdrag.pdf#page=2",
+					"title": "Utfylling "
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_betaling_for_oppdrag.pdf#page=3",
+					"title": "endre/slette"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_betaling_for_oppdrag.pdf#page=4",
+					"title": "Vedlegg"
+				  }
+				]
+			  },
+			  {
+				"title": "Hjelp med:",
+				"buttons": [
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_betaling_for_oppdrag.pdf#page=5",
+					"title": "Send til godkjenning"
+				  }
+				]
+			  }
+			]
+		  }
+		}
+    }
+	exports.betmsg = betmsg;
+    }
+	
+	const tidopp = firstEntityValue(entities, 'tidopp');
+    if (tidopp) {
+      context.tidopp = tidopp; // lagrer i context
+	  const tidoppmsg = {
+	    "attachment": {
+		  "type": "template",
+		  "payload": {
+			"template_type": "generic",
+			"elements": [
+			  {
+				"title": "Hjelp med:",
+				"buttons": [
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_oversikt_over_tidligere_oppdrag.pdf#page=1",
+					"title": "Finne sekvensnummer"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_oversikt_over_tidligere_oppdrag.pdf#page=1",
+					"title": "Se på skjema"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_oversikt_over_tidligere_oppdrag.pdf#page=2",
+					"title": "Slette skjema"
+				  }
+				]
+			  }
+			]
+		  }
+		}
+    }
+	exports.tidoppmsg = tidoppmsg;
+    }
+	
+	const lonn = firstEntityValue(entities, 'lonn');
+    if (lonn) {
+      context.lonn = lonn; // lagrer i context
+	  const lonnmsg = {
+	    "attachment": {
+		  "type": "template",
+		  "payload": {
+			"template_type": "generic",
+			"elements": [
+			  {
+				"title": "Hjelp med:",
+				"buttons": [
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_l%C3%B8nnsslipp.pdf#page=1",
+					"title": "Se på lønnsslipp"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_l%C3%B8nnsslipp.pdf#page=2",
+					"title": "Skrive ut lønnsslipp"
+				  }
+				]
+			  }
+			]
+		  }
+		}
+    }
+	exports.lonnmsg = lonnmsg;
+    }
+	
+	const pers = firstEntityValue(entities, 'pers');
+    if (pers) {
+      context.pers = pers; // lagrer i context
+	  const persmsg = {
+	    "attachment": {
+		  "type": "template",
+		  "payload": {
+			"template_type": "generic",
+			"elements": [
+			  {
+				"title": "Hva vil du gjøre i din profil?",
+				"buttons": [
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_personlig_profil.pdf#page=1",
+					"title": "endre/slette data"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_personlig_profil.pdf#page=2",
+					"title": "endre E-post / tlfnr"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_personlig_profil.pdf#page=2",
+					"title": "Legge inn ny adresse"
+				  }
+				]
+			  },
+			  {
+				"title": "Hva vil du gjøre i din profil?",
+				"buttons": [
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_personlig_profil.pdf#page=3",
+					"title": "Nytt bankkontonummer"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_personlig_profil.pdf#page=4",
+					"title": "Bankkonto for reiseutgifter"
+				  },
+				  {
+					"type": "web_url",
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_personlig_profil.pdf#page=4",
+					"title": "Se persondata"
+				  }
+
+				]
+			  }
+			]
+		  }
+		}
+    }
+	exports.persmsg = persmsg;
+    }
+	
 	
 // Loggikk for diverse lenker
 	const category = firstEntityValue(entities, 'div');
@@ -448,6 +683,7 @@ const allLinks = {
   Ikkesendt: ["https://dfo.no/Documents/LA/brukerdokumentasjon/Hjelp%20til%20Opprett%20reiseregning.pdf#page=20"],
   retur: ["http://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf#page=3"],
   Reisereg: ["http://www.regjeringen.no/no/tema/arbeidsliv/Statlig-arbeidsgiverpolitikk/statens_reiseregulativ/id965/"],
+  MVA: ["https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#nameddest=Merverdiavgift"]
 };
 const allTitles = {
 	default: ['ingen context?'],
@@ -458,6 +694,7 @@ const allTitles = {
 	Ikkesendt: ["Sende reise"],
 	retur: ["Korrigering innkurv"],
 	Reisereg: ["Statens reiseregulativ"],
+	MVA: ["Mva info"]
 };
 const allResp = {
 	default: ["oops"],
@@ -468,4 +705,5 @@ const allResp = {
 	Ikkesendt: ["Du bør undersøke om reisen/honoraret er sendt til godkjenning."],
 	retur: ["Dersom du har fått et skjema i retur må du korrigere dette i innkurven i selvbetjeningsportalen."],
 	Reisereg: ["Her finner du info om reiseregulativet:"],
+	MVA: ["Undersøk mer om Mva her:"]
 };
