@@ -62,6 +62,7 @@ const actions = {
 	delete context.quicklog;
 	delete context.quickreis;
 	delete context.quickov;
+	delete context.quicklonn;
 	delete context.dagreis;
 	delete context.regut;
 	delete context.ovgen;
@@ -206,7 +207,7 @@ const actions = {
 	const quicklonn = firstEntityValue(entities,'quicklonn');
 	if (quicklonn) {
 		context.quicklonn = quicklonn;
-		const quicklonn = {
+		const quicklonnmsg = {
 			"text": "Hvilken del av Lønn og honoraer trenger du hjelp med?",
 			"quick_replies": [
 			{
@@ -226,7 +227,7 @@ const actions = {
 			},
 			]
 		}
-		exports.quicklonn = quicklonn;
+		exports.quicklonnmsg = quicklonnmsg;
 	}
 
 
