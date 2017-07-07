@@ -108,7 +108,8 @@ app.post('/webhook', (req, res) => {
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
-          } else {
+		  }
+			else {
             // bot er ferdig
             // Venter på mer input
             console.log('Venter på meldinger');
@@ -119,16 +120,98 @@ app.post('/webhook', (req, res) => {
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
-			if(context.cat){
-				sendGenericMessage(sender)
+			
+			if(context.quicklog){
+				let messageData = bot.quicklogmsg;
+				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
-				delete window.messageData2;
+				messageData = undefined;
 			}
-			if (context.quick) {
-				sendGenericMessage2(sender)
+			else if (context.quickreis) {
+				let messageData = bot.quickreismsg;
+				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
-				delete window.quickData2;
-          }
+				messageData = undefined;
+			}
+			else if (context.quickov) {
+				let messageData = bot.quickovmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.dagreis) {
+				let messageData = bot.dagreismsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.ovgen) {
+				let messageData = bot.ovgenmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.regut) {
+				let messageData = bot.regutmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.kont) {
+				let messageData = bot.kontmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.tidl) {
+				let messageData = bot.tidlmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.cat) {
+				let messageData = bot.divData;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.bet) {
+				let messageData = bot.betmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.tidopp) {
+				let messageData = bot.tidoppmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.lonn) {
+				let messageData = bot.lonnmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.pers) {
+				let messageData = bot.persmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.start) {
+				let messageData = bot.startmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.quicklonn) {
+				let messageData = bot.quicklonnmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			
 		  }
         }
       );
@@ -136,35 +219,14 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
-function sendGenericMessage(sender){
-	let messageData2 = bot.messageData;
+function sendGenericMessage(sender,messageData){
 	    request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
 	    method: 'POST',
 	    json: {
 		    recipient: {id:sender},
-		    message: messageData2,
-	    }
-    }, function(error, response, body) {
-	    if (error) {
-		    console.log('Error sending messages: ', error)
-	    } else if (response.body.error) {
-		    console.log('Error: ', response.body.error)
-	    }
-    })
-
-}
-
-function sendGenericMessage2(sender){
-	let quickData2 = bot.quickData;
-	    request({
-	    url: 'https://graph.facebook.com/v2.6/me/messages',
-	    qs: {access_token:token},
-	    method: 'POST',
-	    json: {
-		    recipient: {id:sender},
-		    message: quickData2,
+		    message: messageData,
 	    }
     }, function(error, response, body) {
 	    if (error) {
