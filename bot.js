@@ -103,6 +103,9 @@ const actions = {
 	}
 	
 	// Startbeskjed
+	const start = firstEntityValue(entities,'start');
+	if (start) {
+	context.start = start; // Quick replies for registrering av reiseregning
 	const startmsg = {
 			"text": "Hei! Jeg kan hjelpe deg med portalen eller innloggingsproblemer. Velg et alternativ eller spør meg :)",
 			"quick_replies": [
@@ -134,11 +137,10 @@ const actions = {
 			]
 		}
 		exports.startmsg = startmsg;
-	
+	}
 	// Logikk for quickreply -> reiseregning
 	const quickreis = firstEntityValue(entities,'quickreis');
 	if (quickreis) {
-		console.log('KOMMET MEG INN I QUICKREIS');
 		context.quickreis = quickreis; // Quick replies for registrering av reiseregning
 		const quickreismsg = {
 			"text": "Hvilken del av reiseregninger trenger du hjelp med?",

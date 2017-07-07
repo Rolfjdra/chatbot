@@ -97,12 +97,6 @@ app.post('/webhook', (req, res) => {
         'Kult! Jeg kan desverre kun prosessere tekstmeldinger'
       );
 	}
-	else if (msg == "hei" || msg == "hallo" || msg == "heisann" || msg == "hjelp") {
-	let messageData = bot.startmsg;
-	sendGenericMessage(sender,messageData)
-	delete sessions[sessionId];
-	messageData = undefined;		  
-	}
     else if (msg) {
       // Mottok meldingstekst
       // Sender melding til wit.ai
@@ -201,6 +195,12 @@ app.post('/webhook', (req, res) => {
 			}
 			else if (context.pers) {
 				let messageData = bot.persmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.start) {
+				let messageData = bot.startmsg;
 				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
 				messageData = undefined;
