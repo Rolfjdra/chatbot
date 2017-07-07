@@ -185,6 +185,11 @@ const actions = {
 			"quick_replies": [
 			{
 				"content_type": "text",
+				"title": "Start registrering",
+				"payload": "ca"
+			},
+			{
+				"content_type": "text",
 				"title": "1-Generelle data",
 				"payload": "ca"
 			},
@@ -306,8 +311,8 @@ const actions = {
 				"buttons": [
 				  {
 					"type": "web_url",
-					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=2",
-					"title": "Starte en registrering"
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=6",
+					"title": "Regulativ"
 				  },
 				  {
 					"type": "web_url",
@@ -686,7 +691,8 @@ const allLinks = {
   Ikkesendt: ["https://dfo.no/Documents/LA/brukerdokumentasjon/Hjelp%20til%20Opprett%20reiseregning.pdf#page=20"],
   retur: ["http://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf#page=3"],
   Reisereg: ["http://www.regjeringen.no/no/tema/arbeidsliv/Statlig-arbeidsgiverpolitikk/statens_reiseregulativ/id965/"],
-  MVA: ["https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#nameddest=Merverdiavgift"]
+  MVA: ["https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#nameddest=Merverdiavgift"],
+  startreg: ["https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=2"],
 };
 const allTitles = {
 	default: ['ingen context?'],
@@ -697,7 +703,8 @@ const allTitles = {
 	Ikkesendt: ["Sende reise"],
 	retur: ["Korrigering innkurv"],
 	Reisereg: ["Statens reiseregulativ"],
-	MVA: ["Mva info"]
+	MVA: ["Mva info"],
+	startreg: ["Start registrering"],
 };
 const allResp = {
 	default: ["oops"],
@@ -708,5 +715,6 @@ const allResp = {
 	Ikkesendt: ["Du bør undersøke om reisen/honoraret er sendt til godkjenning."],
 	retur: ["Dersom du har fått et skjema i retur må du korrigere dette i innkurven i selvbetjeningsportalen."],
 	Reisereg: ["Her finner du info om reiseregulativet:"],
-	MVA: ["Undersøk mer om Mva her:"]
+	MVA: ["Undersøk mer om Mva her:"],
+	startreg: ["Her finner du hjelp til å starte registreringen din:"],
 };
