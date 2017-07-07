@@ -29,7 +29,7 @@ const actions = {
       return;
 	}
 
-    // Our bot has something to say!
+    // Henter botmeliding!
     // Hent facebook-bruker session
     // TODO: Hent facebook username?
     const recipientId = context._fbid_;
@@ -306,8 +306,8 @@ const actions = {
 				"buttons": [
 				  {
 					"type": "web_url",
-					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=6",
-					"title": "Regulativ"
+					"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_%C3%B8vrige_reiser.pdf#page=2",
+					"title": "Starte en registrering"
 				  },
 				  {
 					"type": "web_url",
@@ -509,7 +509,7 @@ const actions = {
 			"template_type": "generic",
 			"elements": [
 			  {
-				"title": "Hjelp med:",
+				"title": "Hvilken del av oversikt tidligere oppdrag trenger du hjelp  med?",
 				"buttons": [
 				  {
 					"type": "web_url",
