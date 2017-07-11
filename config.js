@@ -7,7 +7,7 @@ if (!WIT_TOKEN) {
 }
 
 
-var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || "EAABcpUgvhNoBAJKIWUI1kDd8wSIIrVCtKlWY5jJM1hcywTZBDHslRbeUoO79OGeFXCIKTZC9PPD4BVNZB6F8rE6IcLZAZCwXjDdX4UgO5U3u5QZChruAipZBCIXQLGr39KP2PajXnMDfcwZCKZC7rFr1j2knK0vPhN3VWwlNTWDavKw1tjorkmWyycMeyxRH9SM8ZD";
+var FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || "EAACtPl97H00BALSImxYPCAtr4AJDUzsEwaNlZBdoei78JBP4zs2nkSCKiLeFNcEgWX5jjTBZCLssh6ffiIbupgH5X5FdRJi2Eth4IvjZCn5bN5z6LcWZALwA6NCcqUgIqE1UFxfzp9TuR4l0bP6EPOjCDVYIXqgrglIAkdcYCwZDZD";
 if (!FB_PAGE_TOKEN) {
 	throw new Error("Ingen FB_PAGE_TOKEN. Gå til https://developers.facebook.com/docs/pages/access-tokens")
 }
