@@ -1,6 +1,7 @@
 'use strict';
 
 // dfo - Under utvilking
+//gotime
 const Wit = require('node-wit').Wit;
 const FB = require('./facebook.js');
 const Config = require('./config.js');

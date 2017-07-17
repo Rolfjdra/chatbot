@@ -1,7 +1,6 @@
 'use strict';
 
 // DFO-chatbot under utvikling
-// NY FACE BRUKER
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
