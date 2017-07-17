@@ -1,6 +1,7 @@
 'use strict';
 
 // DFO-chatbot under utvikling
+// NY FACE BRUKER
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
@@ -206,12 +207,6 @@ app.post('/webhook', (req, res) => {
 			}
 			else if (context.quicklonn) {
 				let messageData = bot.quicklonnmsg;
-				sendGenericMessage(sender,messageData)
-				delete sessions[sessionId];
-				messageData = undefined;
-			}
-			else if (context.Vedlegg) {
-				let messageData = bot.Vedleggmsg;
 				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
 				messageData = undefined;
