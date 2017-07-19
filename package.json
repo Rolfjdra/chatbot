@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/Rolfjdra/chatbot#readme",
   "dependencies": {
-    "botbuilder-quickreplies": "^1.1.1"
+    "body-parser": "^1.17.2",
+    "botbuilder-quickreplies": "^1.1.1",
+    "express": "^4.15.3",
+    "node-wit": "^4.2.0",
+    "request": "^2.81.0"
   }
 }
