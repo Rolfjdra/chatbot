@@ -405,7 +405,7 @@ const actions = {
     }
 	exports.kontmsg = kontmsg;
 	}
-	// Tidligere reiser
+	
 	const tidl = firstEntityValue(entities, 'tidl');
     if (tidl) {
       context.tidl = tidl; // lagrer i context
@@ -462,7 +462,7 @@ const actions = {
     }
 	exports.tidlmsg = tidlmsg;
     }
-	// Betaling for oppdrag
+	
 	const bet = firstEntityValue(entities, 'bet');
     if (bet) {
       context.bet = bet; // lagrer i context
@@ -673,7 +673,7 @@ const actions = {
 
 
 const getWit = () => {
-  return new Wit({acessToken:Config.WIT_TOKEN, actions:actions});
+  return new Wit(Config.WIT_TOKEN, actions);
 };
 
 exports.getWit = getWit;
