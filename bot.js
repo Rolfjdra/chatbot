@@ -1,5 +1,5 @@
 'use strict';
-
+// 1
 // dfo - Under utvilking
 const Wit = require('node-wit').Wit;
 const FB = require('./facebook.js');
