@@ -1,6 +1,7 @@
 'use strict';
 
 // DFO-chatbot under utvikling
+// NY FACE BRUKER
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
@@ -9,6 +10,7 @@ const request = require('request');
 const bot = require('./bot.js');
 const Config = require('./config.js');
 const FB = require('./facebook.js');
+
 
 // Setter opp bot
 const wit = bot.getWit();
@@ -77,28 +79,25 @@ app.post('/webhook', (req, res) => {
   const messaging = FB.getFirstMessagingEntry(req.body);
   if (messaging && messaging.message) {
 
-    // Mottok melding!!
-
+    // Mottok melding!
     // Henter Facebook user ID
     const sender = messaging.sender.id;
-
     // Hent session, eller lag ny
     // Finner samtalehistorikk
     const sessionId = findOrCreateSession(sender);
-
     // Hent meldingsinnhold
-    const msg = messaging.message.text;
+    const msg = messaging.message.text;	
     const atts = messaging.message.attachments;
-
     if (atts) {
       // Vi mottok et vedlegg,bilde,gif etc...
 
       // Autoreply
       FB.fbMessage(
         sender,
-        'Beklager, jeg kan kun prosessere tekstmeldinger'
+        'Kult! Jeg kan desverre kun prosessere tekstmeldinger'
       );
-    } else if (msg) {
+	}
+    else if (msg) {
       // Mottok meldingstekst
       // Sender melding til wit.ai
       // Kjør actions
@@ -106,57 +105,122 @@ app.post('/webhook', (req, res) => {
         sessionId, // aktiv session
         msg, // the user's message 
         sessions[sessionId].context, // session state
-		sendGenericMessage(sender),
         (error, context) => {
           if (error) {
             console.log('Oops! Fikk en feil fra Wit:', error);
-          } else {
+		  }
+			else {
             // bot er ferdig
             // Venter på mer input
             console.log('Venter på meldinger');
 			
 			// oppdater session state
             sessions[sessionId].context = context;
-			 
+
             // Reset session?
             // Kanskje med annen logikk..
             // Eksempel: Prøver med "intent"
-            if (context.links) {
-            delete sessions[sessionId];
-            }
-           
-          }
+			
+			if(context.quicklog){
+				let messageData = bot.quicklogmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.quickreis) {
+				let messageData = bot.quickreismsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.quickov) {
+				let messageData = bot.quickovmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.dagreis) {
+				let messageData = bot.dagreismsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.ovgen) {
+				let messageData = bot.ovgenmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.regut) {
+				let messageData = bot.regutmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.kont) {
+				let messageData = bot.kontmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.tidl) {
+				let messageData = bot.tidlmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.cat) {
+				let messageData = bot.divData;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.bet) {
+				let messageData = bot.betmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.tidopp) {
+				let messageData = bot.tidoppmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.lonn) {
+				let messageData = bot.lonnmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.pers) {
+				let messageData = bot.persmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.start) {
+				let messageData = bot.startmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			else if (context.quicklonn) {
+				let messageData = bot.quicklonnmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+			
+		  }
         }
       );
     }
   }
   res.sendStatus(200);
 });
-
-function sendGenericMessage(sender) {
-    let messageData = {
-	    "attachment": {
-		    "type": "template",
-		    "payload": {
-				"template_type": "generic",
-			    "elements": [{
-					"title": "DFO",
-				    "subtitle": "Brukerveiledning",
-				    "image_url": "https://dfo.no/Images/logo_dfo.png",
-				    "buttons": [{
-					    "type": "web_url",
-					    "url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/stottede-nettlesere/",
-					    "title": "web url"
-				    }, {
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
-				    }]
-			    }]
-		    }
-	    }
-    }
-    request({
+function sendGenericMessage(sender,messageData){
+	    request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
 	    qs: {access_token:token},
 	    method: 'POST',
@@ -171,4 +235,5 @@ function sendGenericMessage(sender) {
 		    console.log('Error: ', response.body.error)
 	    }
     })
+
 }
