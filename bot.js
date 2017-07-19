@@ -673,7 +673,7 @@ const actions = {
 
 
 const getWit = () => {
-  return new Wit({ accessToken: Config.WIT_TOKEN, actions:actions });
+  return new Wit({ accessToken: Config.WIT_TOKEN,actions });
 };
 
 exports.getWit = getWit;
