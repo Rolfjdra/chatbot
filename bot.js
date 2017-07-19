@@ -405,7 +405,7 @@ const actions = {
     }
 	exports.kontmsg = kontmsg;
 	}
-	
+	// Tidligere reiser
 	const tidl = firstEntityValue(entities, 'tidl');
     if (tidl) {
       context.tidl = tidl; // lagrer i context
@@ -462,7 +462,7 @@ const actions = {
     }
 	exports.tidlmsg = tidlmsg;
     }
-	
+	// Betaling for oppdrag
 	const bet = firstEntityValue(entities, 'bet');
     if (bet) {
       context.bet = bet; // lagrer i context
