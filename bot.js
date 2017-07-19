@@ -19,7 +19,7 @@ const firstEntityValue = (entities, entity) => {
 const token = Config.FB_PAGE_TOKEN;
 
 // Bot actions
-const action = {
+const actions = {
   say(sessionId, context, message, cb) {
     console.log(message);
 
@@ -673,7 +673,7 @@ const action = {
 
 
 const getWit = () => {
-  return new Wit({ accessToken:Config.WIT_TOKEN, actions:action });
+  return new Wit({ accessToken:Config.WIT_TOKEN, actions:actions });
 };
 
 exports.getWit = getWit;
