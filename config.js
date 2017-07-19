@@ -1,7 +1,7 @@
 'use strict';
 // Henter opp vertifikasjoner -> Facebookside, WIT-api, Heroku-webhook
 // tester dfoface2
-const WIT_TOKEN = process.env.WIT_TOKEN || "IIM3YKRT7YNJ5KR72YUU2R5J5P4JYBGX"
+const WIT_TOKEN = "IIM3YKRT7YNJ5KR72YUU2R5J5P4JYBGX"
 if (!WIT_TOKEN) {
   throw new Error("Ingen WIT_TOKEN. Hent: https://wit.ai/")
 }
