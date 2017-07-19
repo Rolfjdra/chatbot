@@ -11,6 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/Rolfjdra/chatbot.git"
   },
+   "engines": {
+    "node": ">=6.11.1",
+	"npm": ">=5.3.0"
+  },
   "author": "Rolfjdra",
   "license": "ISC",
   "bugs": {
