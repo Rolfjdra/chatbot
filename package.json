@@ -21,7 +21,7 @@
     "body-parser": "^1.17.2",
     "botbuilder-quickreplies": "^1.1.1",
     "express": "^4.15.3",
-    "node-wit": "^4.2.0",
+    "node-wit": "^3.2.2",
     "request": "^2.81.0"
   }
 }
