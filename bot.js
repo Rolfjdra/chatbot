@@ -20,6 +20,16 @@ const token = Config.FB_PAGE_TOKEN;
 
 // Bot actions
 const actions = {
+	
+  send(request, response) {
+    const {sessionId, context, entities} = request;
+    const {text, quickreplies} = response;
+    return new Promise(function(resolve, reject) {
+        console.log('user said...', request.text);
+        console.log('sending...', JSON.stringify(response));
+        return resolve();
+    });
+  },
   say(sessionId, context, message, cb) {
     console.log(message);
 
