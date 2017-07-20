@@ -661,23 +661,23 @@ const actions = {
     }
 	exports.divData = divData;
     }
-	
-	// Vedleggtest !!!
-	const Vedlegg = firstEntityValue(entities, 'Vedlegg');
-    if (Vedlegg) {
-      context.Vedlegg = Vedlegg; // lagrer i context
-	  const Vedleggmsg = {
+	const img = firstEntityValue(entities, 'img');
+	if (img) {
+		context.img = img;
+		const wantedImg = allImgs[context.img || 'default'];
+		const myImg = wantedImg.toString();
+		
+	  const imgdata = {
 	    "attachment": {
 		    "type": "image",
 		    "payload": {
-					"url": "http://i.imgur.com/OjZiDny.png"
+					"url": myImg
 						}
 	    }
     }
-	exports.Vedleggmsg = Vedleggmsg;
+	exports.imgdata = imgdata;
 	}
-
-
+	
     cb(context);
   },
 
@@ -741,3 +741,8 @@ const allResp = {
 	startreg: ["Her finner du hjelp til å starte registreringen din:"],
 	veil: ["Her finner du hjelp om du er ny til selvbetjeningsportalen:"],
 };
+
+const allImgs = {
+	default [""],
+	Vedlegg = ["http://i.imgur.com/OjZiDny.png"],
+}
