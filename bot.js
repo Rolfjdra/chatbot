@@ -73,6 +73,7 @@ const actions = {
 	delete context.tidopp;
 	delete context.lonn;
 	delete context.pers;
+	delete context.img;
 	
 // SEKSJON FOR QUICKREPLY-LOGIKK
 
@@ -671,7 +672,7 @@ const actions = {
 	    "attachment": {
 		    "type": "image",
 		    "payload": {
-					"url": myImg
+					"url": myImg,
 						}
 	    }
     }
@@ -745,4 +746,4 @@ const allResp = {
 const allImgs = {
 	default: [""],
 	Vedlegg: ["http://i.imgur.com/OjZiDny.png"],
-}
+};

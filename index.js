@@ -211,8 +211,8 @@ app.post('/webhook', (req, res) => {
 				delete sessions[sessionId];
 				messageData = undefined;
 			}
-			else if (context.Vedlegg) {
-				let messageData = bot.Vedleggmsg;
+			else if (context.img) {
+				let messageData = bot.imgdata;
 				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
 				messageData = undefined;
