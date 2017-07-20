@@ -743,6 +743,6 @@ const allResp = {
 };
 
 const allImgs = {
-	default [""],
-	Vedlegg = ["http://i.imgur.com/OjZiDny.png"],
+	default: [""],
+	Vedlegg: ["http://i.imgur.com/OjZiDny.png"],
 }
