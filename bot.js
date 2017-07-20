@@ -678,7 +678,7 @@ const actions = {
 			},
 			{
 				"content_type": "text",
-				"title": "Reiseutgifter",
+				"title": "Egen konto reise",
 				"payload": "cb"
 			},
 			]
@@ -771,6 +771,7 @@ const allResp = {
 
 const allImgs = {
 	default: [""],
-	Vedlegg: ["http://i.imgur.com/RmVzDix.png"],
-	Bankknt: ["http://i.imgur.com/dr9rlu1.png"],
+	Vedlegg: ["http://i.imgur.com/OjZiDny.png"],
+	Hovedbank: ["http://i.imgur.com/RmVzDix.png"],
+	Reisebank: ["http://i.imgur.com/dr9rlu1.png"]
 };

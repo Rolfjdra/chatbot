@@ -211,12 +211,23 @@ app.post('/webhook', (req, res) => {
 				delete sessions[sessionId];
 				messageData = undefined;
 			}
+			
+			// Versjon 3:
+			
+			
 			else if (context.img) {
 				let messageData = bot.imgdata;
 				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];
 				messageData = undefined;
 			}
+			else if (context.quickbank) {
+				let messageData = bot.quickbankmsg;
+				sendGenericMessage(sender,messageData)
+				delete sessions[sessionId];
+				messageData = undefined;
+			}
+		
 			
 		  }
         }
