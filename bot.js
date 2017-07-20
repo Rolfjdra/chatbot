@@ -662,6 +662,32 @@ const actions = {
     }
 	exports.divData = divData;
     }
+	
+	// Versjon 3:
+	
+	const quickbank = firstEntityValue(entities, 'quickbank');
+	if (quickbank) {
+		context.quickbank = quickbank;
+		const quicklonnmsg = {
+			"text": "Hvilke bankkonto vil du legge til? ",
+			"quick_replies": [
+			{
+				"content_type": "text",
+				"title": "Hovedbankkonto",
+				"payload": "ca"
+			},
+			{
+				"content_type": "text",
+				"title": "Reiseutgifter",
+				"payload": "cb"
+			},
+			]
+		}
+		
+	}
+	
+	
+	
 	const img = firstEntityValue(entities, 'img');
 	if (img) {
 		context.img = img;
@@ -745,5 +771,6 @@ const allResp = {
 
 const allImgs = {
 	default: [""],
-	Vedlegg: ["http://i.imgur.com/OjZiDny.png"],
+	Vedlegg: ["http://i.imgur.com/RmVzDix.png"],
+	Bankknt: ["http://i.imgur.com/dr9rlu1.png"],
 };
