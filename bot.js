@@ -668,9 +668,9 @@ const actions = {
       context.Vedlegg = Vedlegg; // lagrer i context
 	  const Vedleggmsg = {
 	    "attachment": {
-		    "type": "video",
+		    "type": "image",
 		    "payload": {
-					"url": "https://www.youtube.com/watch?v=EpjjsvlP8bk&t=3s"
+					"url": "http://i.imgur.com/OjZiDny.png"
 						}
 	    }
     }
