@@ -661,6 +661,26 @@ const actions = {
     }
 	exports.divData = divData;
     }
+	
+	// Vedleggtest !!!
+	const Vedlegg = firstEntityValue(entities, 'Vedlegg');
+    if (Vedlegg) {
+      context.Vedlegg = Vedlegg; // lagrer i context
+	  const Vedleggmsg = {
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "open_graph",
+				"elements": [
+				{
+					"url": "https://www.youtube.com/watch?v=EpjjsvlP8bk&t=3s",
+				}
+			]
+		    }
+	    }
+    }
+	exports.Vedleggmsg = Vedleggmsg;
+	}
 
 
     cb(context);
