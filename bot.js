@@ -668,15 +668,10 @@ const actions = {
       context.Vedlegg = Vedlegg; // lagrer i context
 	  const Vedleggmsg = {
 	    "attachment": {
-		    "type": "template",
+		    "type": "video",
 		    "payload": {
-				"template_type": "open_graph",
-				"elements": [
-				{
-					"url": "https://www.youtube.com/watch?v=EpjjsvlP8bk&t=3s",
-				}
-			]
-		    }
+					"url": "https://www.youtube.com/watch?v=EpjjsvlP8bk&t=3s"
+						}
 	    }
     }
 	exports.Vedleggmsg = Vedleggmsg;
