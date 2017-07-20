@@ -668,7 +668,7 @@ const actions = {
 	const quickbank = firstEntityValue(entities, 'quickbank');
 	if (quickbank) {
 		context.quickbank = quickbank;
-		const quicklonnmsg = {
+		const quickbankmsg = {
 			"text": "Hvilke bankkonto vil du legge til? ",
 			"quick_replies": [
 			{
@@ -680,10 +680,10 @@ const actions = {
 				"content_type": "text",
 				"title": "Egen konto reise",
 				"payload": "cb"
-			},
+			}
 			]
 		}
-		
+		exports.quickbankmsg = quickbankmsg;
 	}
 	
 	
