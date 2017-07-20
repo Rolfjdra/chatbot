@@ -744,7 +744,7 @@ const allLinks = {
 };
 const allTitles = {
 	default: ['ingen context?'],
-	Nettleser: ["Støttede nettlesere"],
+	Nettleser: ["Veiledning nettlesere"],
 	Sperret: ["Bruk av portal"],
 	logge: ["Logg inn her"],
 	Vedlegg: ["Legge ved Vedlegg"],
