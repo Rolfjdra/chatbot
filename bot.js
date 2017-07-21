@@ -75,6 +75,7 @@ const actions = {
 	delete context.pers;
 	delete context.img;
 	delete context.Hilsen;
+	delete context.nye;
 	
 // SEKSJON FOR QUICKREPLY-LOGIKK
 
@@ -684,6 +685,33 @@ const actions = {
 	    }
     }
 	exports.imgdata = imgdata;
+	}
+	
+	const nye = firstEntityValue(entities, 'nye');
+    if (nye) {
+      context.nye = nye; // lagrer i context
+	  const nyemsg = {
+	    "attachment": {
+		    "type": "template",
+		    "payload": {
+				"template_type": "button",
+				"text": "Hjelp med steg 3-Kontroller og send",
+				"buttons": [
+				{
+						"type": "web_url",
+						"url": "https://dfo.no/Documents/LA/Selvbetjening/Honorar/Hjelp_med_selvbetjeningsportalen.pdf",
+						"title": "Brukerveiledning",
+				},
+				{
+						"type": "web_url",
+						"url": "https://dfo.no/kundesider/lonnstjenester/selvbetjening/selvbetjeningsportal/oversikter-over-tjenester-som-er-tilgjengelige-i-dfos-selvbetjeningsportal/",
+						"title": "Videoveiledning",
+				},
+			]
+		    }
+	    }
+    }
+	exports.nyemsg = nyemsg;
 	}
 	
     cb(context);
