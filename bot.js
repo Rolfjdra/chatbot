@@ -105,36 +105,16 @@ const actions = {
 	}
 	
 	// Startbeskjed
-	const start = firstEntityValue(entities,'start');
-	if (start) {
-	context.start = start; // Quick replies for registrering av reiseregning
+	const Hilsen = firstEntityValue(entities,'Hilsen');
+	if (Hilsen) {
+	context.Hilsen = Hilsen; // Quick replies for registrering av reiseregning
 	const startmsg = {
-			"text": "Hei! Jeg kan hjelpe deg med portalen eller innloggingsproblemer. Velg et alternativ eller spør meg :)",
+			"text": "Hei! Jeg er DFØ sin chatbot! Spør meg om du trenger hjelp, eller velg et hurtigvalg:",
 			"quick_replies": [
 			{
 				"content_type": "text",
-				"title": "Veiledning for nye",
+				"title": "Hjelp for nye brukere",
 				"payload": "d"
-			},
-			{
-				"content_type": "text",
-				"title": "Reiseregninger",
-				"payload": "d"
-			},
-			{
-				"content_type": "text",
-				"title": "Lønn og honorarer",
-				"payload": "e"
-			},
-			{
-				"content_type": "text",
-				"title": "Personlig profil",
-				"payload": "f"
-			},
-			{
-				"content_type": "text",
-				"title": "Innlogging",
-				"payload": "g"
 			},
 			{
 				"content_type": "text",
@@ -757,7 +737,7 @@ const allTitles = {
 };
 const allResp = {
 	default: ["oops"],
-	Nettleser: ["Problemet kan komme av nettleseren du bruker. DFØ sin portal er optimalisert for Internet explorer 11. Se veiledning:"],
+	Nettleser: ["Problemet skyldes mest sannsynlig nettleseren du bruker. DFØ sin portal er optimalisert for Internet explorer 11. Se veiledning:"],
 	Sperret: ["Det kan være du har sperret deg selv. Sperren forsvinner av seg selv etter 30 minutter. Sperren kan komme av:"],
 	logge: ["Forklar problemet ditt litt nærmere. Pass på at du logger deg inn riktig sted:"],
 	Vedlegg: ["For å laste opp vedlegg må du klikke på vedlegg-knappen på trinn 1 - Generelle data."],
