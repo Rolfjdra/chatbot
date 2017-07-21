@@ -757,7 +757,7 @@ const allTitles = {
 };
 const allResp = {
 	default: ["oops"],
-	Nettleser: ["Problemet kan komme av nettleseren du bruker. DFØ sin portal er optimalisert for Internet explorer 11."],
+	Nettleser: ["Problemet kan komme av nettleseren du bruker. DFØ sin portal er optimalisert for Internet explorer 11. Se veiledning:"],
 	Sperret: ["Det kan være du har sperret deg selv. Sperren forsvinner av seg selv etter 30 minutter. Sperren kan komme av:"],
 	logge: ["Forklar problemet ditt litt nærmere. Pass på at du logger deg inn riktig sted:"],
 	Vedlegg: ["For å laste opp vedlegg må du klikke på vedlegg-knappen på trinn 1 - Generelle data."],
@@ -773,5 +773,6 @@ const allImgs = {
 	default: [""],
 	Vedlegg: ["http://i.imgur.com/OjZiDny.png"],
 	Hovedbank: ["http://i.imgur.com/RmVzDix.png"],
-	Reisebank: ["http://i.imgur.com/dr9rlu1.png"]
+	Reisebank: ["http://i.imgur.com/dr9rlu1.png"],
+	retur: ["http://i.imgur.com/Qlzg930.png"],
 };
