@@ -695,7 +695,7 @@ const actions = {
 		    "type": "template",
 		    "payload": {
 				"template_type": "button",
-				"text": "Hjelp med steg 3-Kontroller og send",
+				"text": "Hjelp for nye brukere:",
 				"buttons": [
 				{
 						"type": "web_url",
