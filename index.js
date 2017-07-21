@@ -199,7 +199,7 @@ app.post('/webhook', (req, res) => {
 				delete sessions[sessionId];
 				messageData = undefined;
 			}
-			else if (context.start) {
+			else if (context.Hilsen) {
 				let messageData = bot.startmsg;
 				sendGenericMessage(sender,messageData)
 				delete sessions[sessionId];

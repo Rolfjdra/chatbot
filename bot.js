@@ -74,6 +74,7 @@ const actions = {
 	delete context.lonn;
 	delete context.pers;
 	delete context.img;
+	delete context.Hilsen;
 	
 // SEKSJON FOR QUICKREPLY-LOGIKK
 
